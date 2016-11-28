@@ -29,12 +29,12 @@ var ReefPageComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'my-reefpage',
-            templateUrl: 'reef-page.component.html',
-            styleUrls: ['reef-page.component.css'],
+            templateUrl: 'reef-comment.component.html',
+            styleUrls: ['reef-comment.component.css'],
         }), 
         __metadata('design:paramtypes', [reef_page_service_1.ReefPageService])
     ], ReefPageComponent);
     return ReefPageComponent;
 }());
 exports.ReefPageComponent = ReefPageComponent;
-//# sourceMappingURL=reef-page.component.js.map
+//# sourceMappingURL=reef-comment.component.js.map

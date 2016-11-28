@@ -4,8 +4,8 @@ import {ReefPageService} from "./reef-page.service";
 @Component({
     moduleId: module.id,
     selector: 'my-reefpage',
-    templateUrl: 'reef-page.component.html',
-    styleUrls: [ 'reef-page.component.css' ],
+    templateUrl: 'reef-comment.component.html',
+    styleUrls: [ 'reef-comment.component.css' ],
 })
 export class ReefPageComponent implements OnInit {
 
