@@ -5,6 +5,7 @@ import { AppComponent }  from './app.component';
 import { ReefPageComponent} from './reef-comment.component';
 import { ReefPageService } from './reef-page.service';
 import {HttpModule} from "@angular/http";
+import {ReefZoneComponent} from "./reef-zones.component";
 
 @NgModule({
   imports:      [
@@ -14,6 +15,7 @@ import {HttpModule} from "@angular/http";
   declarations: [
       AppComponent,
       ReefPageComponent,
+      ReefZoneComponent,
   ],
   providers:    [ ReefPageService ],
   bootstrap:    [ AppComponent ]

@@ -1,0 +1,10 @@
+<h2>Reef Zones</h2>
+
+<ul class="reefZones">
+    <li *ngFor="let reefZone of usableReefZones">
+        <a href="http://data.aims.gov.au/waAesthetics/servaesthetics?fullReefID={{reefZone.fullreefId}}&zone={{reefZone.reefZoneCode}}">
+            <img src="http://data.aims.gov.au/reef-page-plots/photos/small/{{reefZone.photo}}">
+            <p>{{reefZone.reefZoneName}}</p>
+        </a>
+    </li>
+</ul>

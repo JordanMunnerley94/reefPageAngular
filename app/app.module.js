@@ -14,6 +14,7 @@ var app_component_1 = require('./app.component');
 var reef_comment_component_1 = require('./reef-comment.component');
 var reef_page_service_1 = require('./reef-page.service');
 var http_1 = require("@angular/http");
+var reef_zones_component_1 = require("./reef-zones.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -26,6 +27,7 @@ var AppModule = (function () {
             declarations: [
                 app_component_1.AppComponent,
                 reef_comment_component_1.ReefPageComponent,
+                reef_zones_component_1.ReefZoneComponent,
             ],
             providers: [reef_page_service_1.ReefPageService],
             bootstrap: [app_component_1.AppComponent]
