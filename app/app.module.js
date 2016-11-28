@@ -10,10 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
+var http_1 = require("@angular/http");
 var app_component_1 = require('./app.component');
 var reef_comment_component_1 = require('./reef-comment.component');
 var reef_page_service_1 = require('./reef-page.service');
-var http_1 = require("@angular/http");
 var reef_zones_component_1 = require("./reef-zones.component");
 var AppModule = (function () {
     function AppModule() {

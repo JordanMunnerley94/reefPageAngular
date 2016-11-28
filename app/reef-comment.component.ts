@@ -10,13 +10,16 @@ import {ReefPageService} from "./reef-page.service";
 export class ReefPageComponent implements OnInit {
 
     reefData: any;
+    reefComments: any;
 
     constructor(private reefPageService: ReefPageService) {}
 
     getReefData(): void {
         this.reefPageService.getData().then(reefData => {
-            this.reefData = reefData.reefComment.comments;
-            console.log(this.reefData);
+            this.reefData = reefData;
+            console.log(this.reefData.reefComment);
+            this.reefComments = this.reefData.reefComment.comments;
+            // console.log(this.reefData);
         })
     };
 

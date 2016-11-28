@@ -7,11 +7,12 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class ReefPageService {
 
-    private reefPageUrl = "http://localhost:8080/reefpage";
+    private reefPageUrl = "http://localhost:8080/reefpage?reefid=18032S";
 
     constructor (private http : Http) {}
 
     getData(): Promise<any> {
+        console.log("getData() called!");
         return this.http.get(this.reefPageUrl)
             .toPromise()
             .then(res => res.json() as any)

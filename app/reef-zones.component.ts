@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {ReefPageService} from "./reef-page.service";
 
 @Component({
@@ -10,8 +10,9 @@ import {ReefPageService} from "./reef-page.service";
     ]
 })
 
-export class ReefZoneComponent implements OnInit {
+export class ReefZoneComponent implements OnInit{
 
+    reefData: any;
     reefZones: any[];
     usableReefZones: any[] = [];
 
@@ -19,9 +20,10 @@ export class ReefZoneComponent implements OnInit {
 
     getReefData(): void {
         this.reefPageService.getData().then(reefData => {
+            this.reefData = reefData;
             this.reefZones = reefData.photo;
             this.getUsableZones();
-            console.log("Zone data " + this.reefZones);
+            // console.log(this.reefZones.sort(function(a.reef, b) {return a - b}));
         });
     };
 
@@ -52,6 +54,5 @@ export class ReefZoneComponent implements OnInit {
                     break;
             }
         }
-        return
     }
 }

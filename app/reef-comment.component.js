@@ -17,8 +17,10 @@ var ReefPageComponent = (function () {
     ReefPageComponent.prototype.getReefData = function () {
         var _this = this;
         this.reefPageService.getData().then(function (reefData) {
-            _this.reefData = reefData.reefComment.comments;
-            console.log(_this.reefData);
+            _this.reefData = reefData;
+            console.log(_this.reefData.reefComment);
+            _this.reefComments = _this.reefData.reefComment.comments;
+            // console.log(this.reefData);
         });
     };
     ;
