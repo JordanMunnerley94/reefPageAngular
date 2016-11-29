@@ -44,12 +44,12 @@ export class ReefTableComponent {
             this.reefMantaDataDecade = reefData.mantaByDecade;
             this.reefCoralDataDecade = reefData.juvenileCoralByDecade;
             this.reefFishDataDecade = reefData.fishByDecade;
-            // this.reefBenthicDataDecade = reefData.benthicGroupByDecade;
+            this.reefBenthicDataDecade = reefData.benthicGroupByDecade;
 
             this.reefMantaDataYear = reefData.mantaByYear;
             this.reefCoralDataYear = reefData.juvenileCoralByYear;
             this.reefFishDataYear = reefData.fishByYear;
-            // this.reefBenthicDataYear = reefData.benthicGroupByYear;
+            this.reefBenthicDataYear = reefData.benthicGroupByYear;
 
             this.getColumnHeadersDecades();
             this.getColumnDataDecades();
@@ -68,22 +68,22 @@ export class ReefTableComponent {
                 this.decadeColumnHeaders.push(current.decade)
             }
         }
-        // TODO: To be activated once benthic data is available
-        // if (this.reefBenthicDataDecade.length !== 0) {
-        //     for (let current of this.reefBenthicDataDecade) {
-        //         if (this.decadeColumnHeaders.indexOf(current.decade) < 0) {
-        //             this.decadeColumnHeaders.push(current.decade)
-        //         }
-        //     }
-        // }
 
-        if (this.reefFishDataDecade.length !== 0) {
-            for (let current of this.reefFishDataDecade) {
+        if (this.reefBenthicDataDecade.length !== 0) {
+            for (let current of this.reefBenthicDataDecade) {
                 if (this.decadeColumnHeaders.indexOf(current.decade) < 0) {
                     this.decadeColumnHeaders.push(current.decade)
                 }
             }
         }
+
+        // if (this.reefFishDataDecade.length !== 0) {
+        //     for (let current of this.reefFishDataDecade) {
+        //         if (this.decadeColumnHeaders.indexOf(current.decade) < 0) {
+        //             this.decadeColumnHeaders.push(current.decade)
+        //         }
+        //     }
+        // }
 
         this.decadeColumnHeaders.sort();
     }
@@ -95,22 +95,21 @@ export class ReefTableComponent {
                 this.yearColumnHeaders.push(current.reportYear)
             }
         }
-        // TODO: To be activated once benthic data is available
-        // if (this.reefBenthicDataYear.length !== 0) {
-        //     for (let current of this.reefBenthicDataYear) {
-        //         if (this.yearColumnHeaders.indexOf(current.reportYear) < 0) {
-        //             this.yearColumnHeaders.push(current.reportYear)
-        //         }
-        //     }
-        // }
-
-        if (this.reefFishDataYear.length !== 0) {
-            for (let current of this.reefFishDataYear) {
+        if (this.reefBenthicDataYear.length !== 0) {
+            for (let current of this.reefBenthicDataYear) {
                 if (this.yearColumnHeaders.indexOf(current.reportYear) < 0) {
                     this.yearColumnHeaders.push(current.reportYear)
                 }
             }
         }
+
+        // if (this.reefFishDataYear.length !== 0) {
+        //     for (let current of this.reefFishDataYear) {
+        //         if (this.yearColumnHeaders.indexOf(current.reportYear) < 0) {
+        //             this.yearColumnHeaders.push(current.reportYear)
+        //         }
+        //     }
+        // }
 
         this.yearColumnHeaders.sort();
     }
@@ -130,15 +129,14 @@ export class ReefTableComponent {
                     break;
                 }
             }
-            // TODO: To be activated once benthic data is available
-            // for (let benthicData of this.reefBenthicDataDecade) {
-            //     if (benthicData.decade === currentDecade) {
-            //         currentDecadeData.bHcAvg = benthicData.avgCover;
-            //         currentDecadeData.bHcMin = benthicData.minCover;
-            //         currentDecadeData.bHcMax = benthicData.maxCover;
-            //         break;
-            //     }
-            // }
+            for (let benthicData of this.reefBenthicDataDecade) {
+                if (benthicData.decade === currentDecade) {
+                    currentDecadeData.bHcAvg = benthicData.avgCover;
+                    currentDecadeData.bHcMin = benthicData.minCover;
+                    currentDecadeData.bHcMax = benthicData.maxCover;
+                    break;
+                }
+            }
             for (let coralData of this.reefCoralDataDecade) {
                 if (coralData.decade === currentDecade) {
                     currentDecadeData.coralAbundanceAvg = coralData.avgColonies;
@@ -171,13 +169,12 @@ export class ReefTableComponent {
                     break;
                 }
             }
-            // TODO: To be activated once benthic data is available
-            // for (let benthicData of this.reefBenthicDataYear) {
-            //     if (benthicData.reportYear === currentYear) {
-            //         currentYearData.bHcMedian = benthicData.cover;
-            //         break;
-            //     }
-            // }
+            for (let benthicData of this.reefBenthicDataYear) {
+                if (benthicData.reportYear === currentYear) {
+                    currentYearData.bHcMedian = benthicData.cover;
+                    break;
+                }
+            }
             for (let coralData of this.reefCoralDataYear) {
                 if (coralData.reportYear === currentYear) {
                     currentYearData.coralAbundanceAvg = Math.floor(coralData.colonies / coralData.transects);
@@ -204,7 +201,7 @@ export class ReefTableComponent {
         if (parseInt(splitInput[splitInput.length - 1]) > 10 && parseInt(splitInput[splitInput.length - 1]) <= 30) {
             return true;
         }
-        return false
+        return false;
     }
 
     checkHigh(input: string): boolean {
@@ -212,7 +209,7 @@ export class ReefTableComponent {
         if (parseInt(splitInput[splitInput.length - 1]) > 30 && parseInt(splitInput[splitInput.length - 1]) <= 50) {
             return true;
         }
-        return false
+        return false;
     }
 
     checkVeryHigh(input: string): boolean {
@@ -220,11 +217,14 @@ export class ReefTableComponent {
         if (parseInt(splitInput[splitInput.length - 1]) > 50 && parseInt(splitInput[splitInput.length - 1]) <= 75) {
             return true;
         }
-        return false
+        return false;
     }
 
     checkExtremeHigh(input: string): boolean {
-        let splitInput = input.split('-');
-        return parseInt(splitInput[splitInput.length - 1]) > 75;
+        if (input.indexOf('-')) {
+            let splitInput = input.split('-');
+            return parseInt(splitInput[splitInput.length - 1]) > 75;
+        }
+        return false;
     }
 }

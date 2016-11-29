@@ -29,3 +29,7 @@ th {
 .extreme-cover {
     background-color: limegreen;
 }
+
+.no-data {
+    background-color: lightgray;
+}

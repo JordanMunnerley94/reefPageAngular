@@ -24,12 +24,18 @@
         <td>Crown-of-thorns starfish/tow</td>
         <td *ngFor="let decadeData of decadeColumnData" align="center">{{decadeData.cotAvg}}<br/>
             ({{decadeData.cotMin}}-{{decadeData.cotMax}})</td>
-        <td *ngFor="let yearData of yearColumnData" align="center">{{yearData.cotAvg}}</td>
+        <td *ngFor="let yearData of yearColumnData" align="center">
+            <span *ngIf="yearData.cotAvg !== undefined">{{yearData.cotAvg}}</span>
+            <span *ngIf="yearData.cotAvg === undefined">Not surveyed</span>
+        </td>
     </tr>
     <tr>
         <td>Outbreak Status*</td>
         <td *ngFor="let header of decadeColumnHeaders"></td>
-        <td *ngFor="let yearData of yearColumnData" align="center">{{yearData.outbreakStatus}}</td>
+        <td *ngFor="let yearData of yearColumnData" align="center">
+            <span *ngIf="yearData.outbreakStatus !== undefined">{{yearData.outbreakStatus}}</span>
+            <span *ngIf="yearData.outbreakStatus === undefined" class="no-data">Not Surveyed</span>
+        </td>
     </tr>
     <tr>
         <th></th>
@@ -40,30 +46,48 @@
     <tr>
         <td rowspan="3">Fixed transects on survey sites</td>
         <td>Average percent cover of hard coral</td>
-        <td *ngFor="let header of decadeColumnHeaders"></td>
-        <td *ngFor="let header of yearColumnHeaders" class="hc-cover"></td>
+        <td *ngFor="let header of decadeColumnData">{{decadeData.bHcAvg}}<br/>
+            ({{decadeData.bHcMin}}-{{decadeData.bHcMax}})</td>
+        <td *ngFor="let yearData of yearColumnData" class="hc-cover">
+            <span *ngIf="yearData.bHcMedian !== undefined">{{yearData.bHcMedian}}</span>
+            <span *ngIf="yearData.bHcMedian === undefined" class="no-data">Not Surveyed</span>
+        </td>
+        <!--<td *ngFor="let yearData of yearColumnData" [ngClass]="{'low-cover': checkLow(yearData.bHcMedian),-->
+                                                                <!--'moderate-cover': checkModerate(yearData.bHcMedian),-->
+                                                                <!--'high-cover': checkHigh(yearData.bHcMedian),-->
+                                                                <!--'very-cover': checkVeryHigh(yearData.bHcMedian),-->
+                                                                <!--'extreme-high': checkExtremeHigh(yearData.bHcMedian)}" align="center">{{yearData.bHcMedian}}</td>-->
+
     </tr>
     <tr>
         <td>Average juvenile coral abundance</td>
         <td *ngFor="let decadeData of decadeColumnData" align="center">({{decadeData.coralAbundanceAvg}})<br/>
             {{decadeData.coralAbundanceMin}}-{{decadeData.coralAbundanceMax}}<br/>colonies</td>
-        <td *ngFor="let yearData of yearColumnData" align="center">{{yearData.coralAbundanceAvg}}<br/>colonies</td>
+        <td *ngFor="let yearData of yearColumnData" align="center">
+            <span *ngIf="yearData.coralAbundanceAvg !== undefined">{{yearData.coralAbundanceAvg}}<br/>colonies</span>
+            <span *ngIf="yearData.coralAbundanceAvg === undefined" class="no-data">Not Surveyed</span>
+        </td>
     </tr>
     <tr>
         <td>Total fish species</td>
         <td *ngFor="let decadeData of decadeColumnData" align="center">{{decadeData.avgSpecies}}<br/>
             ({{decadeData.minSpecies}}-{{decadeData.maxSpecies}})</td>
-        <td *ngFor="let yearData of yearColumnData" align="center">{{yearData.species}}</td>
+        <td *ngFor="let yearData of yearColumnData" align="center">
+            <span *ngIf="yearData.species !== undefined">{{yearData.species}}</span>
+            <span *ngIf="yearData.species === undefined" class="no-data">Not Surveyed</span>
+        </td>
     </tr>
 </table>
 
 <p>Color coding reflects an assessment of the status of hard coral cover relative to long-term GBR-wide averages:</p>
-<table width="100%">
-    <td class="low-cover" align="center">Low<br>(0-10%)</td>
-    <td class="moderate-cover" align="center">Moderate<br>(10-30%)</td>
-    <td class="high-cover" align="center">High<br>(30-50%)</td>
-    <td class="very-cover" align="center">Very High<br>(50-75%)</td>
-    <td class="extreme-cover" align="center">Extremely High<br>(75-100%)</td>
+<table width="75%">
+    <tr>
+        <td class="low-cover" align="center">Low<br>(0-10%)</td>
+        <td class="moderate-cover" align="center">Moderate<br>(10-30%)</td>
+        <td class="high-cover" align="center">High<br>(30-50%)</td>
+        <td class="very-cover" align="center">Very High<br>(50-75%)</td>
+        <td class="extreme-cover" align="center">Extremely High<br>(75-100%)</td>
+    </tr>
 </table>
 <p>* AO = Active outbreak, IO= Incipient outbreak, RE = Recovering from past outbreak, NO = No outbreak after recovering or no history of outbreaks. </p>
 <p><i>For explanation of terminology please <a href="#">click here</a> for more information</i></p>

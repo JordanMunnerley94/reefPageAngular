@@ -12,6 +12,7 @@ var core_1 = require("@angular/core");
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
 var ReefPageService = (function () {
+    // private reefPageUrl = "http://localhost:8080/reefpage?reefid=13093A";
     function ReefPageService(http) {
         this.http = http;
         this.reefPageUrl = "http://localhost:8080/reefpage?reefid=18032S";
