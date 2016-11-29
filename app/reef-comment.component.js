@@ -18,9 +18,7 @@ var ReefPageComponent = (function () {
         var _this = this;
         this.reefPageService.getData().then(function (reefData) {
             _this.reefData = reefData;
-            console.log(_this.reefData.reefComment);
             _this.reefComments = _this.reefData.reefComment.comments;
-            // console.log(this.reefData);
         });
     };
     ;
@@ -30,7 +28,7 @@ var ReefPageComponent = (function () {
     ReefPageComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'my-reefpage',
+            selector: 'my-reefcomments',
             templateUrl: 'reef-comment.component.html',
             styleUrls: ['reef-comment.component.css'],
         }), 

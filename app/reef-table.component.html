@@ -1,74 +1,69 @@
 <h2>Summary of status and trends</h2>
-<style>
-    table, th, td {
-        border: 1px solid black;
-    }
-    .middleRow {
-        height: 10px;
-        background-color: black;
-    }
-</style>
 
 <table>
     <tr>
-        <td>Survey Method</td>
-        <td>Measure</td>
+        <th>Survey Method</th>
+        <th>Measure</th>
         <!--Titles by year-->
-        <td *ngFor="let header of decadeColumnHeaders">{{header}}</td>
-        <td *ngFor="let header of yearColumnHeaders">{{header}}</td>
+        <th *ngFor="let header of decadeColumnHeaders">{{header}}<br/>Average<br/>(range)</th>
+        <th *ngFor="let header of yearColumnHeaders">{{header}}</th>
     </tr>
     <tr>
         <td rowspan="3">Manta tows on reef perimeter</td>
         <td>Average percent cover of hard coral</td>
         <!--Avg percent of hard coral cover (percentage values)-->
-        <td *ngFor="let decadeData of decadeColumnData">{{decadeData.mHcAvg}}<br/>
-            ({{decadeData.mHcMin}} - {{decadeData.mHcMax}})</td>
-        <td *ngFor="let yearData of yearColumnData">{{yearData.mHcMedian}}</td>
+        <td *ngFor="let decadeData of decadeColumnData" align="center">{{decadeData.mHcAvg}}<br/>
+            ({{decadeData.mHcMin}}-{{decadeData.mHcMax}})</td>
+        <td *ngFor="let yearData of yearColumnData" [ngClass]="{'low-cover': checkLow(yearData.mHcMedian),
+                                                                'moderate-cover': checkModerate(yearData.mHcMedian),
+                                                                'high-cover': checkHigh(yearData.mHcMedian),
+                                                                'very-cover': checkVeryHigh(yearData.mHcMedian),
+                                                                'extreme-high': checkExtremeHigh(yearData.mHcMedian)}" align="center">{{yearData.mHcMedian}}</td>
     </tr>
     <tr>
         <td>Crown-of-thorns starfish/tow</td>
-        <td *ngFor="let decadeData of decadeColumnData">{{decadeData.cotAvg}}<br/>
-            ({{decadeData.cotMin}} - {{decadeData.cotMax}})</td>
-        <td *ngFor="let yearData of yearColumnData">{{yearData.cotAvg}}</td>
+        <td *ngFor="let decadeData of decadeColumnData" align="center">{{decadeData.cotAvg}}<br/>
+            ({{decadeData.cotMin}}-{{decadeData.cotMax}})</td>
+        <td *ngFor="let yearData of yearColumnData" align="center">{{yearData.cotAvg}}</td>
     </tr>
     <tr>
         <td>Outbreak Status*</td>
         <td *ngFor="let header of decadeColumnHeaders"></td>
-        <td *ngFor="let header of yearColumnHeaders"></td>
+        <td *ngFor="let yearData of yearColumnData" align="center">{{yearData.outbreakStatus}}</td>
     </tr>
-    <tr class="middleRow">
-        <td></td>
-        <td></td>
-        <td *ngFor="let header of decadeColumnHeaders"></td>
-        <td *ngFor="let header of yearColumnHeaders"></td>
+    <tr>
+        <th></th>
+        <th></th>
+        <th *ngFor="let header of decadeColumnHeaders"><p></p></th>
+        <th *ngFor="let header of yearColumnHeaders"><p></p></th>
     </tr>
     <tr>
         <td rowspan="3">Fixed transects on survey sites</td>
         <td>Average percent cover of hard coral</td>
         <td *ngFor="let header of decadeColumnHeaders"></td>
-        <td *ngFor="let header of yearColumnHeaders"></td>
+        <td *ngFor="let header of yearColumnHeaders" class="hc-cover"></td>
     </tr>
     <tr>
         <td>Average juvenile coral abundance</td>
-        <td *ngFor="let decadeData of decadeColumnData">{{decadeData.coralAbundanceAvg}}<br/>
-            ({{decadeData.coralAbundanceMin}} - {{decadeData.coralAbundanceMax}})<br/>colonies</td>
-        <td *ngFor="let yearData of yearColumnData">{{yearData.coralAbundanceAvg}}<br/>colonies</td>
+        <td *ngFor="let decadeData of decadeColumnData" align="center">({{decadeData.coralAbundanceAvg}})<br/>
+            {{decadeData.coralAbundanceMin}}-{{decadeData.coralAbundanceMax}}<br/>colonies</td>
+        <td *ngFor="let yearData of yearColumnData" align="center">{{yearData.coralAbundanceAvg}}<br/>colonies</td>
     </tr>
     <tr>
         <td>Total fish species</td>
-        <td *ngFor="let decadeData of decadeColumnData">{{decadeData.avgSpecies}}<br/>
-            ({{decadeData.minSpecies}} - {{decadeData.maxSpecies}})</td>
-        <td *ngFor="let yearData of yearColumnData">{{yearData.species}}</td>
+        <td *ngFor="let decadeData of decadeColumnData" align="center">{{decadeData.avgSpecies}}<br/>
+            ({{decadeData.minSpecies}}-{{decadeData.maxSpecies}})</td>
+        <td *ngFor="let yearData of yearColumnData" align="center">{{yearData.species}}</td>
     </tr>
 </table>
 
 <p>Color coding reflects an assessment of the status of hard coral cover relative to long-term GBR-wide averages:</p>
-<table>
-    <td>Low<br>(0-10%)</td>
-    <td>Moderate<br>(10-30%)</td>
-    <td>High<br>(30-50%)</td>
-    <td>Very High<br>(50-75%)</td>
-    <td>Extremely High<br>(75-100%)</td>
+<table width="100%">
+    <td class="low-cover" align="center">Low<br>(0-10%)</td>
+    <td class="moderate-cover" align="center">Moderate<br>(10-30%)</td>
+    <td class="high-cover" align="center">High<br>(30-50%)</td>
+    <td class="very-cover" align="center">Very High<br>(50-75%)</td>
+    <td class="extreme-cover" align="center">Extremely High<br>(75-100%)</td>
 </table>
 <p>* AO = Active outbreak, IO= Incipient outbreak, RE = Recovering from past outbreak, NO = No outbreak after recovering or no history of outbreaks. </p>
 <p><i>For explanation of terminology please <a href="#">click here</a> for more information</i></p>

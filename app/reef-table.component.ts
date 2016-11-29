@@ -167,6 +167,7 @@ export class ReefTableComponent {
                 if (mantaData.reportYear === currentYear) {
                     currentYearData.mHcMedian = mantaData.medianHcRange;
                     currentYearData.cotAvg = mantaData.meanCots;
+                    currentYearData.outbreakStatus = mantaData.status;
                     break;
                 }
             }
@@ -193,4 +194,37 @@ export class ReefTableComponent {
         }
     }
 
+    checkLow(input: string): boolean {
+        let splitInput = input.split('-');
+        return parseInt(splitInput[splitInput.length - 1]) <= 10;
+    }
+
+    checkModerate(input: string): boolean {
+        let splitInput = input.split('-');
+        if (parseInt(splitInput[splitInput.length - 1]) > 10 && parseInt(splitInput[splitInput.length - 1]) <= 30) {
+            return true;
+        }
+        return false
+    }
+
+    checkHigh(input: string): boolean {
+        let splitInput = input.split('-');
+        if (parseInt(splitInput[splitInput.length - 1]) > 30 && parseInt(splitInput[splitInput.length - 1]) <= 50) {
+            return true;
+        }
+        return false
+    }
+
+    checkVeryHigh(input: string): boolean {
+        let splitInput = input.split('-');
+        if (parseInt(splitInput[splitInput.length - 1]) > 50 && parseInt(splitInput[splitInput.length - 1]) <= 75) {
+            return true;
+        }
+        return false
+    }
+
+    checkExtremeHigh(input: string): boolean {
+        let splitInput = input.split('-');
+        return parseInt(splitInput[splitInput.length - 1]) > 75;
+    }
 }

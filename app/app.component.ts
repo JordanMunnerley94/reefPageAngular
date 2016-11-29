@@ -6,8 +6,8 @@ import {ReefPageService} from "./reef-page.service";
   template: `
 <h1>{{title}}</h1>
 <my-reefzone></my-reefzone>
-<my-reefpage></my-reefpage>
 <my-reeftable></my-reeftable>
+<my-reefcomments></my-reefcomments>
 
 `,
 })
@@ -22,7 +22,6 @@ export class AppComponent implements OnInit {
   getReefData(): void {
     this.reefPageService.getData().then(reefData => {
       this.reefData = reefData;
-      // console.log("Zone data " + this.reefData);
     });
   };
 

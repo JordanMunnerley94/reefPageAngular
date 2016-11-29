@@ -19,7 +19,6 @@ var AppComponent = (function () {
         var _this = this;
         this.reefPageService.getData().then(function (reefData) {
             _this.reefData = reefData;
-            // console.log("Zone data " + this.reefData);
         });
     };
     ;
@@ -29,7 +28,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n<h1>{{title}}</h1>\n<my-reefzone></my-reefzone>\n<my-reefpage></my-reefpage>\n<my-reeftable></my-reeftable>\n\n",
+            template: "\n<h1>{{title}}</h1>\n<my-reefzone></my-reefzone>\n<my-reeftable></my-reeftable>\n<my-reefcomments></my-reefcomments>\n\n",
         }), 
         __metadata('design:paramtypes', [reef_page_service_1.ReefPageService])
     ], AppComponent);
