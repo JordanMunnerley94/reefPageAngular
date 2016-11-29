@@ -1,17 +1,12 @@
 export class TableYearData {
 
-    year: number;
-
+    year: string;
     mHcMedian: string;
-
-    cotAvg: number;
-
+    cotAvg: string;
     outbreakStatus: string;
-
     bHcMedian: string;
-
     coralAbundanceAvg: number;
+    species: string;
 
-    species: number;
-
+    constructor() {};
 }

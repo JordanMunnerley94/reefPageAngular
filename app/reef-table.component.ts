@@ -19,10 +19,18 @@ export class ReefTableComponent {
 
     reefFishDataYear: any[];
     reefFishDataDecade: any[];
+
     reefCoralDataYear: any[];
     reefCoralDataDecade: any[];
+
     reefMantaDataYear: any[];
     reefMantaDataDecade: any[];
+
+    reefBenthicDataYear: any[];
+    reefBenthicDataDecade: any[];
+
+    decadeColumnHeaders: string[] = [];
+    yearColumnHeaders:  string[] = [];
 
     decadeColumnData: TableDecadeData[] = [];
     yearColumnData:  TableYearData[] = [];
@@ -36,12 +44,17 @@ export class ReefTableComponent {
             this.reefMantaDataDecade = reefData.mantaByDecade;
             this.reefCoralDataDecade = reefData.juvenileCoralByDecade;
             this.reefFishDataDecade = reefData.fishByDecade;
+            // this.reefBenthicDataDecade = reefData.benthicGroupByDecade;
 
             this.reefMantaDataYear = reefData.mantaByYear;
             this.reefCoralDataYear = reefData.juvenileCoralByYear;
             this.reefFishDataYear = reefData.fishByYear;
+            // this.reefBenthicDataYear = reefData.benthicGroupByYear;
 
-            console.log("Zone data " + this.reefTableData);
+            this.getColumnHeadersDecades();
+            this.getColumnDataDecades();
+            this.getColumnHeadersYears();
+            this.getColumnDataYears();
         });
     };
 
@@ -49,30 +62,135 @@ export class ReefTableComponent {
         this.getReefData();
     }
 
-    generateDecadeColumns(): void {
-        let decade: string = "";
+    getColumnHeadersDecades(): void {
         if (this.reefMantaDataDecade.length !== 0) {
-            let decade = this.reefMantaDataDecade[0].decade;
-            let mHcAvg = this.reefMantaDataDecade[0].avgMedianHc;
-            let mHcMin = this.reefMantaDataDecade[0].minMedianHcRange;
-            let mHcMax = this.reefMantaDataDecade[0].maxMedianHcRange;
-            let cotAvg = this.reefMantaDataDecade[0].avgCotsPerTow;
-            let cotMin = this.reefMantaDataDecade[0].minCotsPerTow;
-            let cotMax = this.reefMantaDataDecade[0].maxCotsPerTow;
+            for (let current of this.reefMantaDataDecade) {
+                this.decadeColumnHeaders.push(current.decade)
+            }
         }
-        if (this.reefCoralDataDecade.length !== 0) {
-            for (let coralEntry of this.reefCoralDataDecade) {
-                if (coralEntry.decade === decade) {
-                    let coralAbundanceAvg = coralEntry.avgColonies;
-                    // let coralAbundanceMin =
-                    // let coralAbundanceMax
+        // TODO: To be activated once benthic data is available
+        // if (this.reefBenthicDataDecade.length !== 0) {
+        //     for (let current of this.reefBenthicDataDecade) {
+        //         if (this.decadeColumnHeaders.indexOf(current.decade) < 0) {
+        //             this.decadeColumnHeaders.push(current.decade)
+        //         }
+        //     }
+        // }
+
+        if (this.reefFishDataDecade.length !== 0) {
+            for (let current of this.reefFishDataDecade) {
+                if (this.decadeColumnHeaders.indexOf(current.decade) < 0) {
+                    this.decadeColumnHeaders.push(current.decade)
                 }
             }
         }
+
+        this.decadeColumnHeaders.sort();
     }
 
-    generateYearColumns(): void {
 
+    getColumnHeadersYears(): void {
+        if (this.reefMantaDataYear.length !== 0) {
+            for (let current of this.reefMantaDataYear) {
+                this.yearColumnHeaders.push(current.reportYear)
+            }
+        }
+        // TODO: To be activated once benthic data is available
+        // if (this.reefBenthicDataYear.length !== 0) {
+        //     for (let current of this.reefBenthicDataYear) {
+        //         if (this.yearColumnHeaders.indexOf(current.reportYear) < 0) {
+        //             this.yearColumnHeaders.push(current.reportYear)
+        //         }
+        //     }
+        // }
+
+        if (this.reefFishDataYear.length !== 0) {
+            for (let current of this.reefFishDataYear) {
+                if (this.yearColumnHeaders.indexOf(current.reportYear) < 0) {
+                    this.yearColumnHeaders.push(current.reportYear)
+                }
+            }
+        }
+
+        this.yearColumnHeaders.sort();
+    }
+
+    getColumnDataDecades(): void {
+        for (let currentDecade of this.decadeColumnHeaders) {
+            let currentDecadeData: TableDecadeData = new TableDecadeData;
+            currentDecadeData.decade = currentDecade;
+            for (let mantaData of this.reefMantaDataDecade) {
+                if (mantaData.decade === currentDecade) {
+                    currentDecadeData.mHcAvg = mantaData.avgMedianHc;
+                    currentDecadeData.mHcMin = mantaData.minMedianHcRange;
+                    currentDecadeData.mHcMax = mantaData.maxMedianHcRange;
+                    currentDecadeData.cotAvg = mantaData.avgCotsPerTow;
+                    currentDecadeData.cotMin = mantaData.minCotsPerTow;
+                    currentDecadeData.cotMax = mantaData.maxCotsPerTow;
+                    break;
+                }
+            }
+            // TODO: To be activated once benthic data is available
+            // for (let benthicData of this.reefBenthicDataDecade) {
+            //     if (benthicData.decade === currentDecade) {
+            //         currentDecadeData.bHcAvg = benthicData.avgCover;
+            //         currentDecadeData.bHcMin = benthicData.minCover;
+            //         currentDecadeData.bHcMax = benthicData.maxCover;
+            //         break;
+            //     }
+            // }
+            for (let coralData of this.reefCoralDataDecade) {
+                if (coralData.decade === currentDecade) {
+                    currentDecadeData.coralAbundanceAvg = coralData.avgColonies;
+                    currentDecadeData.coralAbundanceMin = coralData.minColonies;
+                    currentDecadeData.coralAbundanceMax = coralData.maxColonies;
+                    break;
+                }
+            }
+            for (let fishData of this.reefFishDataDecade) {
+                if (fishData.decade === currentDecade) {
+                    currentDecadeData.avgSpecies = fishData.avgSpecies;
+                    currentDecadeData.minSpecies = fishData.minSpecies;
+                    currentDecadeData.maxSpecies = fishData.maxSpecies;
+                    break;
+                }
+            }
+            this.decadeColumnData.push(currentDecadeData);
+        }
+    }
+
+    getColumnDataYears(): void {
+        for (let currentYear of this.yearColumnHeaders) {
+            let currentYearData: TableYearData = new TableYearData;
+            currentYearData.year = currentYear;
+            for (let mantaData of this.reefMantaDataYear) {
+                if (mantaData.reportYear === currentYear) {
+                    currentYearData.mHcMedian = mantaData.medianHcRange;
+                    currentYearData.cotAvg = mantaData.meanCots;
+                    break;
+                }
+            }
+            // TODO: To be activated once benthic data is available
+            // for (let benthicData of this.reefBenthicDataYear) {
+            //     if (benthicData.reportYear === currentYear) {
+            //         currentYearData.bHcMedian = benthicData.cover;
+            //         break;
+            //     }
+            // }
+            for (let coralData of this.reefCoralDataYear) {
+                if (coralData.reportYear === currentYear) {
+                    currentYearData.coralAbundanceAvg = Math.floor(coralData.colonies / coralData.transects);
+                    break;
+                }
+            }
+            for (let fishData of this.reefFishDataYear) {
+                if (fishData.reportYear === currentYear) {
+                    currentYearData.species = fishData.species;
+                    break;
+                }
+            }
+            this.yearColumnData.push(currentYearData);
+        }
     }
 
 }

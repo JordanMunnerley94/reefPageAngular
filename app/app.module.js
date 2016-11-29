@@ -15,6 +15,7 @@ var app_component_1 = require('./app.component');
 var reef_comment_component_1 = require('./reef-comment.component');
 var reef_page_service_1 = require('./reef-page.service');
 var reef_zones_component_1 = require("./reef-zones.component");
+var reef_table_component_1 = require("./reef-table.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -28,6 +29,7 @@ var AppModule = (function () {
                 app_component_1.AppComponent,
                 reef_comment_component_1.ReefPageComponent,
                 reef_zones_component_1.ReefZoneComponent,
+                reef_table_component_1.ReefTableComponent
             ],
             providers: [reef_page_service_1.ReefPageService],
             bootstrap: [app_component_1.AppComponent]

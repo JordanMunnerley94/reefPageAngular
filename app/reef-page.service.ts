@@ -12,7 +12,6 @@ export class ReefPageService {
     constructor (private http : Http) {}
 
     getData(): Promise<any> {
-        console.log("getData() called!");
         return this.http.get(this.reefPageUrl)
             .toPromise()
             .then(res => res.json() as any)

@@ -7,6 +7,7 @@ import {ReefPageService} from "./reef-page.service";
 <h1>{{title}}</h1>
 <my-reefzone></my-reefzone>
 <my-reefpage></my-reefpage>
+<my-reeftable></my-reeftable>
 
 `,
 })

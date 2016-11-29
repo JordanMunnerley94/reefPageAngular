@@ -17,7 +17,6 @@ var ReefPageService = (function () {
         this.reefPageUrl = "http://localhost:8080/reefpage?reefid=18032S";
     }
     ReefPageService.prototype.getData = function () {
-        console.log("getData() called!");
         return this.http.get(this.reefPageUrl)
             .toPromise()
             .then(function (res) { return res.json(); })

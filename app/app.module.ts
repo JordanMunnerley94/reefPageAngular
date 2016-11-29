@@ -6,6 +6,7 @@ import { AppComponent }  from './app.component';
 import { ReefPageComponent} from './reef-comment.component';
 import { ReefPageService } from './reef-page.service';
 import { ReefZoneComponent } from "./reef-zones.component";
+import {ReefTableComponent} from "./reef-table.component";
 
 @NgModule({
   imports:      [
@@ -16,6 +17,7 @@ import { ReefZoneComponent } from "./reef-zones.component";
       AppComponent,
       ReefPageComponent,
       ReefZoneComponent,
+      ReefTableComponent
   ],
   providers:    [ ReefPageService ],
   bootstrap:    [ AppComponent ]

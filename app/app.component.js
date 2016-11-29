@@ -29,7 +29,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n<h1>{{title}}</h1>\n<my-reefzone></my-reefzone>\n<my-reefpage></my-reefpage>\n\n",
+            template: "\n<h1>{{title}}</h1>\n<my-reefzone></my-reefzone>\n<my-reefpage></my-reefpage>\n<my-reeftable></my-reeftable>\n\n",
         }), 
         __metadata('design:paramtypes', [reef_page_service_1.ReefPageService])
     ], AppComponent);
