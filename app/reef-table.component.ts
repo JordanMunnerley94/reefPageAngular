@@ -171,7 +171,7 @@ export class ReefTableComponent {
             }
             for (let benthicData of this.reefBenthicDataYear) {
                 if (benthicData.reportYear === currentYear) {
-                    currentYearData.bHcMedian = benthicData.cover;
+                    currentYearData.bHcMedian = benthicData.cover.toString();
                     break;
                 }
             }
@@ -192,39 +192,63 @@ export class ReefTableComponent {
     }
 
     checkLow(input: string): boolean {
-        let splitInput = input.split('-');
-        return parseInt(splitInput[splitInput.length - 1]) <= 10;
+        console.log(input, typeof input);
+        if (input.includes('-')) {
+            let splitInput = input.split('-');
+            return parseInt(splitInput[splitInput.length - 1]) <= 10;
+        } else {
+            return parseInt(input) <= 10;
+        }
     }
 
     checkModerate(input: string): boolean {
-        let splitInput = input.split('-');
-        if (parseInt(splitInput[splitInput.length - 1]) > 10 && parseInt(splitInput[splitInput.length - 1]) <= 30) {
-            return true;
+        if (input.includes('-')) {
+            let splitInput = input.split('-');
+            if (parseInt(splitInput[splitInput.length - 1]) > 10 && parseInt(splitInput[splitInput.length - 1]) <= 30) {
+                return true;
+            }
+        } else {
+            if (parseInt(input) > 10 && parseInt(input) <= 30) {
+                return true;
+            }
         }
         return false;
     }
 
     checkHigh(input: string): boolean {
-        let splitInput = input.split('-');
-        if (parseInt(splitInput[splitInput.length - 1]) > 30 && parseInt(splitInput[splitInput.length - 1]) <= 50) {
-            return true;
+        if (input.includes('-')) {
+            let splitInput = input.split('-');
+            if (parseInt(splitInput[splitInput.length - 1]) > 30 && parseInt(splitInput[splitInput.length - 1]) <= 50) {
+                return true;
+            }
+        } else {
+            if (parseInt(input) > 30 && parseInt(input) <= 50) {
+                return true;
+            }
         }
         return false;
     }
 
     checkVeryHigh(input: string): boolean {
-        let splitInput = input.split('-');
-        if (parseInt(splitInput[splitInput.length - 1]) > 50 && parseInt(splitInput[splitInput.length - 1]) <= 75) {
-            return true;
+        if (input.includes('-')) {
+            let splitInput = input.split('-');
+            if (parseInt(splitInput[splitInput.length - 1]) > 50 && parseInt(splitInput[splitInput.length - 1]) <= 75) {
+                return true;
+            }
+        } else {
+            if (parseInt(input) > 50 && parseInt(input) <= 75) {
+                return true;
+            }
         }
         return false;
     }
 
     checkExtremeHigh(input: string): boolean {
-        if (input.indexOf('-')) {
+        if (input.includes('-')) {
             let splitInput = input.split('-');
             return parseInt(splitInput[splitInput.length - 1]) > 75;
+        } else {
+            return parseInt(input) > 75;
         }
-        return false;
     }
 }

@@ -12,8 +12,8 @@
         <td rowspan="3">Manta tows on reef perimeter</td>
         <td>Average percent cover of hard coral</td>
         <!--Avg percent of hard coral cover (percentage values)-->
-        <td *ngFor="let decadeData of decadeColumnData" align="center">{{decadeData.mHcAvg}}<br/>
-            ({{decadeData.mHcMin}}-{{decadeData.mHcMax}})</td>
+        <td *ngFor="let decadeData of decadeColumnData" align="center">{{decadeData.mHcAvg}}%<br/>
+            ({{decadeData.mHcMin}}-{{decadeData.mHcMax}}%)</td>
         <td *ngFor="let yearData of yearColumnData" [ngClass]="{'low-cover': checkLow(yearData.mHcMedian),
                                                                 'moderate-cover': checkModerate(yearData.mHcMedian),
                                                                 'high-cover': checkHigh(yearData.mHcMedian),
@@ -46,17 +46,17 @@
     <tr>
         <td rowspan="3">Fixed transects on survey sites</td>
         <td>Average percent cover of hard coral</td>
-        <td *ngFor="let header of decadeColumnData">{{decadeData.bHcAvg}}<br/>
-            ({{decadeData.bHcMin}}-{{decadeData.bHcMax}})</td>
-        <td *ngFor="let yearData of yearColumnData" class="hc-cover">
-            <span *ngIf="yearData.bHcMedian !== undefined">{{yearData.bHcMedian}}</span>
-            <span *ngIf="yearData.bHcMedian === undefined" class="no-data">Not Surveyed</span>
-        </td>
-        <!--<td *ngFor="let yearData of yearColumnData" [ngClass]="{'low-cover': checkLow(yearData.bHcMedian),-->
-                                                                <!--'moderate-cover': checkModerate(yearData.bHcMedian),-->
-                                                                <!--'high-cover': checkHigh(yearData.bHcMedian),-->
-                                                                <!--'very-cover': checkVeryHigh(yearData.bHcMedian),-->
-                                                                <!--'extreme-high': checkExtremeHigh(yearData.bHcMedian)}" align="center">{{yearData.bHcMedian}}</td>-->
+        <td *ngFor="let decadeData of decadeColumnData" align="center">{{decadeData.bHcAvg}}%<br/>
+            ({{decadeData.bHcMin}}-{{decadeData.bHcMax}}%)</td>
+        <!--<td *ngFor="let yearData of yearColumnData" align="center">-->
+            <!--<span *ngIf="yearData.bHcMedian !== undefined">{{yearData.bHcMedian}}</span>-->
+            <!--<span *ngIf="yearData.bHcMedian === undefined" class="no-data">Not Surveyed</span>-->
+        <!--</td>-->
+        <td *ngFor="let yearData of yearColumnData" [ngClass]="{'low-cover': checkLow(yearData.bHcMedian),
+                                                                'moderate-cover': checkModerate(yearData.bHcMedian),
+                                                                'high-cover': checkHigh(yearData.bHcMedian),
+                                                                'very-cover': checkVeryHigh(yearData.bHcMedian),
+                                                                'extreme-high': checkExtremeHigh(yearData.bHcMedian)}" align="center">{{yearData.bHcMedian}}%</td>
 
     </tr>
     <tr>
