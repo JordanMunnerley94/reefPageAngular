@@ -19,6 +19,9 @@ var ReefPageComponent = (function () {
         this.reefPageService.getData().then(function (reefData) {
             _this.reefData = reefData;
             _this.reefComments = _this.reefData.reefComment.comments;
+            // Removing out of place <P> tags from the received comment.
+            _this.reefComments = _this.reefComments.replace('<P>', '');
+            _this.reefComments = _this.reefComments.replace('</P>', '');
         });
     };
     ;

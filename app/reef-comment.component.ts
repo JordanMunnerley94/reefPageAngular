@@ -18,6 +18,10 @@ export class ReefPageComponent implements OnInit {
         this.reefPageService.getData().then(reefData => {
             this.reefData = reefData;
             this.reefComments = this.reefData.reefComment.comments;
+
+            // Removing out of place <P> tags from the received comment.
+            this.reefComments = this.reefComments.replace('<P>', '');
+            this.reefComments = this.reefComments.replace('</P>', '');
         })
     };
 
