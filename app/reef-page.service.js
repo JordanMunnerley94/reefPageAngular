@@ -17,6 +17,7 @@ var ReefPageService = (function () {
         this.http = http;
         this.indexDataUrl = "http://localhost:8080/reefComments?size=500&sort=reefName";
         this.reefPageUrl = "http://localhost:8080/reefpage?reefid=18032S";
+        this.specificReefPageUrl = "http://localhost:8080/reefpage?reefid=";
     }
     ReefPageService.prototype.getIndexEntries = function () {
         window.setTimeout(console.log(), 4000);
@@ -25,8 +26,14 @@ var ReefPageService = (function () {
             .then(function (res) { return res.json()._embedded.reefComments; })
             .catch(this.handleError);
     };
-    ReefPageService.prototype.getData = function () {
-        return this.http.get(this.reefPageUrl)
+    // getData(): Promise<any> {
+    //     return this.http.get(this.reefPageUrl)
+    //         .toPromise()
+    //         .then(res => res.json() as any)
+    //         .catch(this.handleError);
+    // }
+    ReefPageService.prototype.getData = function (id) {
+        return this.http.get(this.specificReefPageUrl + id)
             .toPromise()
             .then(function (res) { return res.json(); })
             .catch(this.handleError);

@@ -18,6 +18,7 @@ var reef_zones_component_1 = require("./reef-zones.component");
 var reef_table_component_1 = require("./reef-table.component");
 var reef_graphs_component_1 = require("./reef-graphs.component");
 var index_page_component_1 = require("./index-page.component");
+var app_routing_module_1 = require("./app-routing.module");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -26,6 +27,7 @@ var AppModule = (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 http_1.HttpModule,
+                app_routing_module_1.AppRoutingModule
             ],
             declarations: [
                 app_component_1.AppComponent,
@@ -36,7 +38,7 @@ var AppModule = (function () {
                 index_page_component_1.IndexPageComponent
             ],
             providers: [reef_page_service_1.ReefPageService],
-            bootstrap: [app_component_1.AppComponent]
+            bootstrap: [index_page_component_1.IndexPageComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

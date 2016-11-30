@@ -1,4 +1,9 @@
+import 'rxjs/add/operator/switchMap';
+
 import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Params} from '@angular/router';
+import {Location} from '@angular/common';
+
 import {ReefPageService} from "./reef-page.service";
 
 @Component({
@@ -9,7 +14,6 @@ import {ReefPageService} from "./reef-page.service";
 <my-reeftable></my-reeftable>
 <my-graphs></my-graphs>
 <my-reefcomments></my-reefcomments>
-<my-index-page></my-index-page>
 
 `,
 })
@@ -19,16 +23,21 @@ export class AppComponent implements OnInit {
 
   public title: String = 'Reef Page Test';
 
-  constructor(private reefPageService: ReefPageService) {}
+  constructor(
+    private reefPageService: ReefPageService,
+    private route: ActivatedRoute,
+    private location: Location
+  ) {}
 
-  getReefData(): void {
-    this.reefPageService.getData().then(reefData => {
-      this.reefData = reefData;
-      this.title = reefData.reefComment.reefName + " PAGE.";
-    });
-  };
+  // getReefData(): void {
+  //   this.reefPageService.getData().then(reefData => {
+  //     this.reefData = reefData;
+  //     this.title = reefData.reefComment.reefName + " PAGE.";
+  //   });
+  // };
 
   ngOnInit(): void {
-    this.getReefData();
+    this.route.params
+        .switchMap((params: Params) => this.reefPageService.getData(params['reefid']))
   }
 }

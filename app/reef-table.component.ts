@@ -38,7 +38,7 @@ export class ReefTableComponent {
     constructor(private reefPageService: ReefPageService) {}
 
     getReefData(): void {
-        this.reefPageService.getData().then(reefData => {
+        this.reefPageService.getData("18032S").then(reefData => {
             this.reefTableData = reefData;
 
             this.reefMantaDataDecade = reefData.mantaByDecade;

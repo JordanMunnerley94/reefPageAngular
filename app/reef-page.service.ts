@@ -9,6 +9,7 @@ export class ReefPageService {
 
     private indexDataUrl = "http://localhost:8080/reefComments?size=500&sort=reefName"
     private reefPageUrl = "http://localhost:8080/reefpage?reefid=18032S";
+    private specificReefPageUrl = "http://localhost:8080/reefpage?reefid=";
     // private reefPageUrl = "http://localhost:8080/reefpage?reefid=13093A";
 
     constructor (private http : Http) {}
@@ -21,8 +22,15 @@ export class ReefPageService {
             .catch(this.handleError);
     }
 
-    getData(): Promise<any> {
-        return this.http.get(this.reefPageUrl)
+    // getData(): Promise<any> {
+    //     return this.http.get(this.reefPageUrl)
+    //         .toPromise()
+    //         .then(res => res.json() as any)
+    //         .catch(this.handleError);
+    // }
+
+    getData(id: string): Promise<any> {
+        return this.http.get(this.specificReefPageUrl + id)
             .toPromise()
             .then(res => res.json() as any)
             .catch(this.handleError);

@@ -18,16 +18,16 @@ export class ReefZoneComponent implements OnInit{
 
     constructor(private reefPageService: ReefPageService) {}
 
-    getReefData(): void {
-        this.reefPageService.getData().then(reefData => {
-            this.reefData = reefData;
-            this.reefZones = reefData.photo;
-            this.getUsableZones();
-        });
-    };
+    // getReefData(): void {
+    //     this.reefPageService.getData("18032S").then(reefData => {
+    //         this.reefData = reefData;
+    //         this.reefZones = reefData.photo;
+    //         this.getUsableZones();
+    //     });
+    // };
 
     ngOnInit(): void {
-        this.getReefData();
+        // this.getReefData();
     }
 
     getUsableZones(): void {

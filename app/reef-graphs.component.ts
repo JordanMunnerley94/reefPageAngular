@@ -26,7 +26,7 @@ export class ReefGraphsComponent implements OnInit{
     constructor(private reefPageService: ReefPageService) {};
 
     getReefData(): void {
-        this.reefPageService.getData().then(reefData => {
+        this.reefPageService.getData("18032S").then(reefData => {
             this.reefData = reefData;
             this.reefPhoto = reefData.photo;
             this.reefId = this.reefPhoto[0].fullreefId;

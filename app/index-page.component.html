@@ -1,7 +1,8 @@
 <ul>
     <li *ngFor="let reefData of reefNames"
-        (click)="onSelect(reefData)">
+        (click)="goToDetail(reefData)">
 
         <span class="reefList" >{{reefData.reefName}}</span>
     </li>
 </ul>
+<router-outlet></router-outlet>
