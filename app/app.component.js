@@ -19,6 +19,7 @@ var AppComponent = (function () {
         var _this = this;
         this.reefPageService.getData().then(function (reefData) {
             _this.reefData = reefData;
+            _this.title = reefData.reefComment.reefName + " PAGE.";
         });
     };
     ;

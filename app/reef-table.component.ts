@@ -192,7 +192,9 @@ export class ReefTableComponent {
     }
 
     checkLow(input: string): boolean {
-        console.log(input, typeof input);
+        if (!input) {
+            return false;
+        }
         if (input.includes('-')) {
             let splitInput = input.split('-');
             return parseInt(splitInput[splitInput.length - 1]) <= 10;
@@ -202,6 +204,9 @@ export class ReefTableComponent {
     }
 
     checkModerate(input: string): boolean {
+        if (!input) {
+            return false;
+        }
         if (input.includes('-')) {
             let splitInput = input.split('-');
             if (parseInt(splitInput[splitInput.length - 1]) > 10 && parseInt(splitInput[splitInput.length - 1]) <= 30) {
@@ -216,6 +221,9 @@ export class ReefTableComponent {
     }
 
     checkHigh(input: string): boolean {
+        if (!input) {
+            return false;
+        }
         if (input.includes('-')) {
             let splitInput = input.split('-');
             if (parseInt(splitInput[splitInput.length - 1]) > 30 && parseInt(splitInput[splitInput.length - 1]) <= 50) {
@@ -230,6 +238,9 @@ export class ReefTableComponent {
     }
 
     checkVeryHigh(input: string): boolean {
+        if (!input) {
+            return false;
+        }
         if (input.includes('-')) {
             let splitInput = input.split('-');
             if (parseInt(splitInput[splitInput.length - 1]) > 50 && parseInt(splitInput[splitInput.length - 1]) <= 75) {
@@ -244,11 +255,21 @@ export class ReefTableComponent {
     }
 
     checkExtremeHigh(input: string): boolean {
+        if (!input) {
+            return false;
+        }
         if (input.includes('-')) {
             let splitInput = input.split('-');
             return parseInt(splitInput[splitInput.length - 1]) > 75;
         } else {
             return parseInt(input) > 75;
         }
+    }
+
+    checkEmptyData(input: string): boolean {
+        if (!input) {
+            return true;
+        }
+        return false;
     }
 }

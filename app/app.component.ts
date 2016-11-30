@@ -22,6 +22,7 @@ export class AppComponent implements OnInit {
   getReefData(): void {
     this.reefPageService.getData().then(reefData => {
       this.reefData = reefData;
+      this.title = reefData.reefComment.reefName + " PAGE.";
     });
   };
 
