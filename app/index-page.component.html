@@ -1,0 +1,7 @@
+<ul>
+    <li *ngFor="let reefData of reefNames"
+        (click)="onSelect(reefData)">
+
+        <span class="reefList" >{{reefData.reefName}}</span>
+    </li>
+</ul>

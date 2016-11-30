@@ -9,6 +9,7 @@ import {ReefPageService} from "./reef-page.service";
 <my-reeftable></my-reeftable>
 <my-graphs></my-graphs>
 <my-reefcomments></my-reefcomments>
+<my-index-page></my-index-page>
 
 `,
 })

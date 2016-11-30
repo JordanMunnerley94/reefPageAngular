@@ -15,8 +15,16 @@ var ReefPageService = (function () {
     // private reefPageUrl = "http://localhost:8080/reefpage?reefid=13093A";
     function ReefPageService(http) {
         this.http = http;
-        this.reefPageUrl = "http://red-indianfish:8080/reefpage?reefid=18032S";
+        this.indexDataUrl = "http://localhost:8080/reefComments?size=500&sort=reefName";
+        this.reefPageUrl = "http://localhost:8080/reefpage?reefid=18032S";
     }
+    ReefPageService.prototype.getIndexEntries = function () {
+        window.setTimeout(console.log(), 4000);
+        return this.http.get(this.indexDataUrl)
+            .toPromise()
+            .then(function (res) { return res.json()._embedded.reefComments; })
+            .catch(this.handleError);
+    };
     ReefPageService.prototype.getData = function () {
         return this.http.get(this.reefPageUrl)
             .toPromise()

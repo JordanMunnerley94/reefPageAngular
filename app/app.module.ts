@@ -8,6 +8,7 @@ import { ReefPageService } from './reef-page.service';
 import { ReefZoneComponent } from "./reef-zones.component";
 import {ReefTableComponent} from "./reef-table.component";
 import {ReefGraphsComponent} from "./reef-graphs.component";
+import {IndexPageComponent} from "./index-page.component";
 
 @NgModule({
   imports:      [
@@ -19,7 +20,8 @@ import {ReefGraphsComponent} from "./reef-graphs.component";
       ReefPageComponent,
       ReefZoneComponent,
       ReefTableComponent,
-      ReefGraphsComponent
+      ReefGraphsComponent,
+      IndexPageComponent
   ],
   providers:    [ ReefPageService ],
   bootstrap:    [ AppComponent ]
