@@ -23,7 +23,6 @@ export class ReefZoneComponent implements OnInit{
             this.reefData = reefData;
             this.reefZones = reefData.photo;
             this.getUsableZones();
-            // console.log(this.reefZones.sort(function(a.reef, b) {return a - b}));
         });
     };
 

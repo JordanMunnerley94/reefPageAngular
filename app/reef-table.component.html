@@ -4,16 +4,16 @@
     <tr>
         <th>Survey Method</th>
         <th>Measure</th>
-        <!--Titles by year-->
         <th *ngFor="let header of decadeColumnHeaders">{{header}}<br/>Average<br/>(range)</th>
         <th *ngFor="let header of yearColumnHeaders">{{header}}</th>
     </tr>
     <tr>
         <td rowspan="3">Manta tows on reef perimeter</td>
         <td>Average percent cover of hard coral</td>
-        <!--Avg percent of hard coral cover (percentage values)-->
-        <td *ngFor="let decadeData of decadeColumnData" align="center">{{decadeData.mHcAvg}}%<br/>
-            ({{decadeData.mHcMin}}-{{decadeData.mHcMax}}%)</td>
+        <td *ngFor="let decadeData of decadeColumnData" [ngClass]="{'no-data': checkEmptyData(decadeData.mHcAvg)}" align="center">
+            <span *ngIf="decadeData.mHcAvg !== undefined">{{decadeData.mHcAvg}}%<br/>({{decadeData.mHcMin}}-{{decadeData.mHcMax}}%)</span>
+            <span *ngIf="decadeData.mHcAvg === undefined">Not Surveyed</span>
+        </td>
         <td *ngFor="let yearData of yearColumnData" [ngClass]="{'low-cover': checkLow(yearData.mHcMedian),
                                                                 'moderate-cover': checkModerate(yearData.mHcMedian),
                                                                 'high-cover': checkHigh(yearData.mHcMedian),
@@ -23,8 +23,10 @@
     </tr>
     <tr>
         <td>Crown-of-thorns starfish/tow</td>
-        <td *ngFor="let decadeData of decadeColumnData" align="center">{{decadeData.cotAvg}}<br/>
-            ({{decadeData.cotMin}}-{{decadeData.cotMax}})</td>
+        <td *ngFor="let decadeData of decadeColumnData" [ngClass]="{'no-data': checkEmptyData(decadeData.cotAvg)}" align="center">
+            <span *ngIf="decadeData.cotAvg !== undefined">{{decadeData.cotAvg}}<br/>({{decadeData.cotMin}}-{{decadeData.cotMax}})</span>
+            <span *ngIf="decadeData.cotAvg === undefined">Not Surveyed</span>
+        </td>
         <td *ngFor="let yearData of yearColumnData" [ngClass]="{'no-data': checkEmptyData(yearData.cotAvg.toString())}" align="center">
             <span *ngIf="yearData.cotAvg !== undefined">{{yearData.cotAvg}}</span>
             <span *ngIf="yearData.cotAvg === undefined">Not surveyed</span>
@@ -47,12 +49,10 @@
     <tr>
         <td rowspan="3">Fixed transects on survey sites</td>
         <td>Average percent cover of hard coral</td>
-        <td *ngFor="let decadeData of decadeColumnData" align="center">{{decadeData.bHcAvg}}%<br/>
-            ({{decadeData.bHcMin}}-{{decadeData.bHcMax}}%)</td>
-        <!--<td *ngFor="let yearData of yearColumnData" align="center">-->
-            <!--<span *ngIf="yearData.bHcMedian !== undefined">{{yearData.bHcMedian}}</span>-->
-            <!--<span *ngIf="yearData.bHcMedian === undefined" class="no-data">Not Surveyed</span>-->
-        <!--</td>-->
+        <td *ngFor="let decadeData of decadeColumnData" [ngClass]="{'no-data': checkEmptyData(decadeData.bHcAvg)}" align="center">
+            <span *ngIf="decadeData.bHcAvg !== undefined">{{decadeData.bHcAvg}}%<br/>({{decadeData.bHcMin}}-{{decadeData.bHcMax}}%)</span>
+            <span *ngIf="decadeData.bHcAvg === undefined">Not Surveyed</span>
+        </td>
         <td *ngFor="let yearData of yearColumnData" [ngClass]="{'low-cover': checkLow(yearData.bHcMedian),
                                                                 'moderate-cover': checkModerate(yearData.bHcMedian),
                                                                 'high-cover': checkHigh(yearData.bHcMedian),
@@ -66,8 +66,10 @@
     </tr>
     <tr>
         <td>Average juvenile coral abundance</td>
-        <td *ngFor="let decadeData of decadeColumnData" align="center">({{decadeData.coralAbundanceAvg}})<br/>
-            {{decadeData.coralAbundanceMin}}-{{decadeData.coralAbundanceMax}}<br/>colonies</td>
+        <td *ngFor="let decadeData of decadeColumnData" [ngClass]="{'no-data': checkEmptyData(decadeData.coralAbundanceAvg)}" align="center">
+            <span *ngIf="decadeData.coralAbundanceAvg !== undefined">({{decadeData.coralAbundanceAvg}})<br/>{{decadeData.coralAbundanceMin}}-{{decadeData.coralAbundanceMax}}<br/>colonies</span>
+            <span *ngIf="decadeData.coralAbundanceAvg === undefined">Not surveyed</span>
+        </td>
         <td *ngFor="let yearData of yearColumnData" [ngClass]="{'no-data': checkEmptyData(yearData.coralAbundanceAvg)}" align="center">
             <span *ngIf="yearData.coralAbundanceAvg !== undefined">{{yearData.coralAbundanceAvg}}<br/>colonies</span>
             <span *ngIf="yearData.coralAbundanceAvg === undefined" class="no-data">Not Surveyed</span>
@@ -75,8 +77,10 @@
     </tr>
     <tr>
         <td>Total fish species</td>
-        <td *ngFor="let decadeData of decadeColumnData" align="center">{{decadeData.avgSpecies}}<br/>
-            ({{decadeData.minSpecies}}-{{decadeData.maxSpecies}})</td>
+        <td *ngFor="let decadeData of decadeColumnData" [ngClass]="{'no-data': checkEmptyData(decadeData.avgSpecies)}" align="center">
+            <span *ngIf="decadeData.avgSpecies !== undefined">{{decadeData.avgSpecies}}<br/>({{decadeData.minSpecies}}-{{decadeData.maxSpecies}})</span>
+            <span *ngIf="decadeData.avgSpecies === undefined">Not Surveyed</span>
+        </td>
         <td *ngFor="let yearData of yearColumnData" [ngClass]="{'no-data': checkEmptyData(yearData.species)}" align="center">
             <span *ngIf="yearData.species !== undefined">{{yearData.species}}</span>
             <span *ngIf="yearData.species === undefined" class="no-data">Not Surveyed</span>
