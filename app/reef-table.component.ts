@@ -267,7 +267,7 @@ export class ReefTableComponent {
     }
 
     checkEmptyData(input: string): boolean {
-        if (!input) {
+        if (!input && input !== "0") {
             return true;
         }
         return false;

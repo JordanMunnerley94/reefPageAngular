@@ -15,7 +15,7 @@ var ReefPageService = (function () {
     // private reefPageUrl = "http://localhost:8080/reefpage?reefid=13093A";
     function ReefPageService(http) {
         this.http = http;
-        this.reefPageUrl = "http://red-indianfish:8080/reefpage?reefid=13041S";
+        this.reefPageUrl = "http://red-indianfish:8080/reefpage?reefid=18032S";
     }
     ReefPageService.prototype.getData = function () {
         return this.http.get(this.reefPageUrl)

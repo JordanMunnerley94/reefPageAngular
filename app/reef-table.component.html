@@ -25,14 +25,14 @@
         <td>Crown-of-thorns starfish/tow</td>
         <td *ngFor="let decadeData of decadeColumnData" align="center">{{decadeData.cotAvg}}<br/>
             ({{decadeData.cotMin}}-{{decadeData.cotMax}})</td>
-        <td *ngFor="let yearData of yearColumnData" [ngClass]="{'no-data': checkEmptyData(yearData.cotAvg)}" align="center">
+        <td *ngFor="let yearData of yearColumnData" [ngClass]="{'no-data': checkEmptyData(yearData.cotAvg.toString())}" align="center">
             <span *ngIf="yearData.cotAvg !== undefined">{{yearData.cotAvg}}</span>
             <span *ngIf="yearData.cotAvg === undefined">Not surveyed</span>
         </td>
     </tr>
     <tr>
         <td>Outbreak Status*</td>
-        <td *ngFor="let header of decadeColumnHeaders"></td>
+        <td *ngFor="let header of decadeColumnHeaders" class="no-data"></td>
         <td *ngFor="let yearData of yearColumnData" [ngClass]="{'no-data': checkEmptyData(yearData.outbreakStatus)}" align="center">
             <span *ngIf="yearData.outbreakStatus !== undefined">{{yearData.outbreakStatus}}</span>
             <span *ngIf="yearData.outbreakStatus === undefined" class="no-data">Not Surveyed</span>
