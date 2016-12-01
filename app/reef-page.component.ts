@@ -10,9 +10,10 @@ import {ReefPageService} from "./reef-page.service";
   selector: 'my-reef-page',
   template: `
 <h1>{{title}}</h1>
+<my-reefmaps></my-reefmaps>
 <my-reefzone></my-reefzone>
 <my-reeftable></my-reeftable>
-<my-graphs></my-graphs>
+<my-reefgraphs></my-reefgraphs>
 <my-reefcomments></my-reefcomments>
 
 `,

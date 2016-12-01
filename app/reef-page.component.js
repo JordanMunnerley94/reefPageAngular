@@ -44,7 +44,7 @@ var ReefPageComponent = (function () {
     ReefPageComponent = __decorate([
         core_1.Component({
             selector: 'my-reef-page',
-            template: "\n<h1>{{title}}</h1>\n<my-reefzone></my-reefzone>\n<my-reeftable></my-reeftable>\n<my-graphs></my-graphs>\n<my-reefcomments></my-reefcomments>\n\n",
+            template: "\n<h1>{{title}}</h1>\n<my-reefmaps></my-reefmaps>\n<my-reefzone></my-reefzone>\n<my-reeftable></my-reeftable>\n<my-reefgraphs></my-reefgraphs>\n<my-reefcomments></my-reefcomments>\n\n",
         }), 
         __metadata('design:paramtypes', [reef_page_service_1.ReefPageService, router_1.ActivatedRoute, common_1.Location])
     ], ReefPageComponent);
