@@ -19,7 +19,10 @@
                                                                 'high-cover': checkHigh(yearData.mHcMedian),
                                                                 'very-cover': checkVeryHigh(yearData.mHcMedian),
                                                                 'extreme-high': checkExtremeHigh(yearData.mHcMedian),
-                                                                'no-data': checkEmptyData(yearData.mHcMedian)}" align="center">{{yearData.mHcMedian}}</td>
+                                                                'no-data': checkEmptyData(yearData.mHcMedian)}" align="center">
+            <span *ngIf="yearData.mHcMedian !== undefined">{{yearData.mHcMedian}}</span>
+            <span *ngIf="yearData.mHcMedian === undefined">Not Surveyed</span>
+        </td>
     </tr>
     <tr>
         <td>Crown-of-thorns starfish/tow</td>
@@ -27,7 +30,7 @@
             <span *ngIf="decadeData.cotAvg !== undefined">{{decadeData.cotAvg}}<br/>({{decadeData.cotMin}}-{{decadeData.cotMax}})</span>
             <span *ngIf="decadeData.cotAvg === undefined">Not Surveyed</span>
         </td>
-        <td *ngFor="let yearData of yearColumnData" [ngClass]="{'no-data': checkEmptyData(yearData.cotAvg.toString())}" align="center">
+        <td *ngFor="let yearData of yearColumnData" [ngClass]="{'no-data': checkEmptyData(yearData.cotAvg)}" align="center">
             <span *ngIf="yearData.cotAvg !== undefined">{{yearData.cotAvg}}</span>
             <span *ngIf="yearData.cotAvg === undefined">Not surveyed</span>
         </td>

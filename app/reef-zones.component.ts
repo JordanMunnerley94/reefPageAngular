@@ -1,5 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {ReefPageService} from "./reef-page.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
     moduleId: module.id,
@@ -15,19 +16,26 @@ export class ReefZoneComponent implements OnInit{
     reefData: any;
     reefZones: any[];
     usableReefZones: any[] = [];
+    id: string;
 
-    constructor(private reefPageService: ReefPageService) {}
+    constructor(
+        private reefPageService: ReefPageService,
+        private route: ActivatedRoute
+) {}
 
-    // getReefData(): void {
-    //     this.reefPageService.getData("18032S").then(reefData => {
-    //         this.reefData = reefData;
-    //         this.reefZones = reefData.photo;
-    //         this.getUsableZones();
-    //     });
-    // };
+    getReefData(id: string): void {
+        this.reefPageService.getData(id).then(reefData => {
+            this.reefData = reefData;
+            this.reefZones = reefData.photo;
+            this.getUsableZones();
+        });
+    };
 
     ngOnInit(): void {
-        // this.getReefData();
+        this.route.params.subscribe(params => {
+            this.id = params['reefid'];
+            this.getReefData(this.id);
+        });
     }
 
     getUsableZones(): void {
@@ -38,19 +46,21 @@ export class ReefZoneComponent implements OnInit{
         }
 
         for (let zone of this.usableReefZones) {
-            switch (zone.reefZoneCode) {
-                case ("1"):
-                    zone.reefZoneName = "Back";
-                    break;
-                case ("2"):
-                    zone.reefZoneName = "Flank 1";
-                    break;
-                case ("3"):
-                    zone.reefZoneName = "Front";
-                    break;
-                case ("4"):
-                    zone.reefZoneName = "Flank 2";
-                    break;
+            if (zone !== undefined) {
+                switch (zone.reefZoneCode) {
+                    case ("1"):
+                        zone.reefZoneName = "Back";
+                        break;
+                    case ("2"):
+                        zone.reefZoneName = "Flank 1";
+                        break;
+                    case ("3"):
+                        zone.reefZoneName = "Front";
+                        break;
+                    case ("4"):
+                        zone.reefZoneName = "Flank 2";
+                        break;
+                }
             }
         }
     }

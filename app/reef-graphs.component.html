@@ -1,9 +1,9 @@
 <h2>Reef Page Figures</h2>
 
-<img src="{{mantaGraphUrl}}">
+<img *ngIf="mantaExists" src="{{mantaGraphUrl}}" onerror="console.log('Picture Error 1')">
 
-<img src="{{benthicGraphUrl}}">
+<img *ngIf="benthicExists" src="{{benthicGraphUrl}}" onerror="console.log('Picture Error 2')">
 
-<img src="{{fishSizeGraphUrl}}">
+<img *ngIf="benthicExists" src="{{fishSizeGraphUrl}}" onerror="console.log('Picture Error 3')">
 
-<img src="{{fishHerbGraphUrl}}">
+<img *ngIf="benthicExists" src="{{fishHerbGraphUrl}}" onerror="console.log('Picture Error 4')">

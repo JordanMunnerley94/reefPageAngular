@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ReefPageService} from "./reef-page.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
     moduleId: module.id,
@@ -7,14 +8,17 @@ import {ReefPageService} from "./reef-page.service";
     templateUrl: 'reef-comment.component.html',
     styleUrls: [ 'reef-comment.component.css' ],
 })
-export class ReefPageComponent implements OnInit {
+export class ReefCommentComponent implements OnInit {
 
     reefData: any;
     reefComments: any;
+    id: string;
 
-    constructor(private reefPageService: ReefPageService) {}
+    constructor(
+        private reefPageService: ReefPageService,
+        private route: ActivatedRoute) {}
 
-    getReefData(): void {
+    getReefData(id: string): void {
         this.reefPageService.getData("18032S").then(reefData => {
             this.reefData = reefData;
             this.reefComments = this.reefData.reefComment.comments;
@@ -26,6 +30,9 @@ export class ReefPageComponent implements OnInit {
     };
 
     ngOnInit(): void {
-        this.getReefData();
+        this.route.params.subscribe(params => {
+            this.id = params['reefid'];
+            this.getReefData(this.id);
+        });
     }
 }

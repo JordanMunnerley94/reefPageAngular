@@ -3,6 +3,7 @@ import {Component} from "@angular/core";
 import {ReefPageService} from "./reef-page.service";
 import {TableDecadeData} from "./table-decade-data";
 import {TableYearData} from "./table-year-data";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
     moduleId: module.id,
@@ -14,6 +15,8 @@ import {TableYearData} from "./table-year-data";
 })
 
 export class ReefTableComponent {
+
+    id: string;
 
     reefTableData: any[];
 
@@ -35,10 +38,13 @@ export class ReefTableComponent {
     decadeColumnData: TableDecadeData[] = [];
     yearColumnData:  TableYearData[] = [];
 
-    constructor(private reefPageService: ReefPageService) {}
+    constructor(
+        private reefPageService: ReefPageService,
+        private route: ActivatedRoute
+    ) {}
 
-    getReefData(): void {
-        this.reefPageService.getData("18032S").then(reefData => {
+    getReefData(id: string): void {
+        this.reefPageService.getData(id).then(reefData => {
             this.reefTableData = reefData;
 
             this.reefMantaDataDecade = reefData.mantaByDecade;
@@ -59,7 +65,10 @@ export class ReefTableComponent {
     };
 
     ngOnInit(): void {
-        this.getReefData();
+        this.route.params.subscribe(params => {
+            this.id = params['reefid'];
+            this.getReefData(this.id);
+        });
     }
 
     getColumnHeadersDecades(): void {
@@ -266,8 +275,9 @@ export class ReefTableComponent {
         }
     }
 
-    checkEmptyData(input: string): boolean {
-        if (!input && input !== "0") {
+    checkEmptyData(input: any): boolean {
+        // if (!input && input !== "0") {
+        if (input === undefined) {
             return true;
         }
         return false;

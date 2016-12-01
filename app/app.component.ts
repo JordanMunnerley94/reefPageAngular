@@ -7,37 +7,11 @@ import {Location} from '@angular/common';
 import {ReefPageService} from "./reef-page.service";
 
 @Component({
-  selector: 'my-app',
-  template: `
-<h1>{{title}}</h1>
-<my-reefzone></my-reefzone>
-<my-reeftable></my-reeftable>
-<my-graphs></my-graphs>
-<my-reefcomments></my-reefcomments>
-
+    selector: 'my-app',
+    template: `
+    <h1>Reef Page App</h1>
+    <router-outlet></router-outlet>
 `,
 })
-export class AppComponent implements OnInit {
 
-  public reefData: any;
-
-  public title: String = 'Reef Page Test';
-
-  constructor(
-    private reefPageService: ReefPageService,
-    private route: ActivatedRoute,
-    private location: Location
-  ) {}
-
-  // getReefData(): void {
-  //   this.reefPageService.getData().then(reefData => {
-  //     this.reefData = reefData;
-  //     this.title = reefData.reefComment.reefName + " PAGE.";
-  //   });
-  // };
-
-  ngOnInit(): void {
-    this.route.params
-        .switchMap((params: Params) => this.reefPageService.getData(params['reefid']))
-  }
-}
+export class AppComponent { }

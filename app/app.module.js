@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var http_1 = require("@angular/http");
-var app_component_1 = require('./app.component');
+var reef_page_component_1 = require('./reef-page.component');
 var reef_comment_component_1 = require('./reef-comment.component');
 var reef_page_service_1 = require('./reef-page.service');
 var reef_zones_component_1 = require("./reef-zones.component");
@@ -19,6 +19,7 @@ var reef_table_component_1 = require("./reef-table.component");
 var reef_graphs_component_1 = require("./reef-graphs.component");
 var index_page_component_1 = require("./index-page.component");
 var app_routing_module_1 = require("./app-routing.module");
+var app_component_1 = require("./app.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -31,14 +32,15 @@ var AppModule = (function () {
             ],
             declarations: [
                 app_component_1.AppComponent,
-                reef_comment_component_1.ReefPageComponent,
+                reef_page_component_1.ReefPageComponent,
+                reef_comment_component_1.ReefCommentComponent,
                 reef_zones_component_1.ReefZoneComponent,
                 reef_table_component_1.ReefTableComponent,
                 reef_graphs_component_1.ReefGraphsComponent,
                 index_page_component_1.IndexPageComponent
             ],
             providers: [reef_page_service_1.ReefPageService],
-            bootstrap: [index_page_component_1.IndexPageComponent]
+            bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

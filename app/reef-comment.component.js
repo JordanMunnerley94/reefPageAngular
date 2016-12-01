@@ -10,11 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var reef_page_service_1 = require("./reef-page.service");
-var ReefPageComponent = (function () {
-    function ReefPageComponent(reefPageService) {
+var router_1 = require("@angular/router");
+var ReefCommentComponent = (function () {
+    function ReefCommentComponent(reefPageService, route) {
         this.reefPageService = reefPageService;
+        this.route = route;
     }
-    ReefPageComponent.prototype.getReefData = function () {
+    ReefCommentComponent.prototype.getReefData = function (id) {
         var _this = this;
         this.reefPageService.getData("18032S").then(function (reefData) {
             _this.reefData = reefData;
@@ -25,19 +27,23 @@ var ReefPageComponent = (function () {
         });
     };
     ;
-    ReefPageComponent.prototype.ngOnInit = function () {
-        this.getReefData();
+    ReefCommentComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.params.subscribe(function (params) {
+            _this.id = params['reefid'];
+            _this.getReefData(_this.id);
+        });
     };
-    ReefPageComponent = __decorate([
+    ReefCommentComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'my-reefcomments',
             templateUrl: 'reef-comment.component.html',
             styleUrls: ['reef-comment.component.css'],
         }), 
-        __metadata('design:paramtypes', [reef_page_service_1.ReefPageService])
-    ], ReefPageComponent);
-    return ReefPageComponent;
+        __metadata('design:paramtypes', [reef_page_service_1.ReefPageService, router_1.ActivatedRoute])
+    ], ReefCommentComponent);
+    return ReefCommentComponent;
 }());
-exports.ReefPageComponent = ReefPageComponent;
+exports.ReefCommentComponent = ReefCommentComponent;
 //# sourceMappingURL=reef-comment.component.js.map
