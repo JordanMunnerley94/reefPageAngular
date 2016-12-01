@@ -18,7 +18,7 @@ var ReefCommentComponent = (function () {
     }
     ReefCommentComponent.prototype.getReefData = function (id) {
         var _this = this;
-        this.reefPageService.getData("18032S").then(function (reefData) {
+        this.reefPageService.getData(id).then(function (reefData) {
             _this.reefData = reefData;
             _this.reefComments = _this.reefData.reefComment.comments;
             // Removing out of place <P> tags from the received comment.

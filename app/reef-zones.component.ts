@@ -42,7 +42,9 @@ export class ReefZoneComponent implements OnInit{
 
         for(let zone of this.reefZones) {
             let i = parseInt(zone.reefZoneCode) - 1;
-            this.usableReefZones[i] = zone;
+            if (i < 4) {
+                this.usableReefZones[i] = zone;
+            }
         }
 
         for (let zone of this.usableReefZones) {

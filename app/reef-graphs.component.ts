@@ -2,7 +2,6 @@ import {Component, OnInit} from "@angular/core";
 import {ReefPageService} from "./reef-page.service";
 import {ActivatedRoute} from "@angular/router";
 
-
 @Component({
     moduleId: module.id,
     selector: 'my-graphs',
@@ -26,6 +25,7 @@ export class ReefGraphsComponent implements OnInit{
 
     benthicExists: boolean;
     mantaExists: boolean;
+    reefName: string;
 
     constructor(
         private reefPageService: ReefPageService,
@@ -42,6 +42,7 @@ export class ReefGraphsComponent implements OnInit{
             this.mantaExists = this.checkMantaDataExists();
             console.log(this.benthicExists);
             console.log(this.mantaExists);
+            this.reefName = reefData.reefComment.reefName;
         });
     };
 

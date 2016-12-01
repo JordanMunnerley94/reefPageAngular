@@ -7,3 +7,31 @@
 <img *ngIf="benthicExists" src="{{fishSizeGraphUrl}}" onerror="console.log('Picture Error 3')">
 
 <img *ngIf="benthicExists" src="{{fishHerbGraphUrl}}" onerror="console.log('Picture Error 4')">
+
+<p *ngIf="!mantaExists ">
+    Figure 1. Estimates of benthic cover and fish abundance at {{reefName}}.
+    Estimates for benthic data and fish abundance from permanent fixed transects
+    are raw means plus or minus one standard error. Fitted lines and confidence bands are mean
+    estimates plus or minus one standard error derived from general additive models (gam),
+    with a cubic regression and fifteen knots. For explanation of terminology and ranges of
+    values <a href="#">click here</a>
+</p>
+
+<p *ngIf="!benthicExists">
+    Figure 1. Estimates of COTS (Acanthaster planci) at {{reefName}}.
+    Data for manta tows are median hard coral cover and number of Acanthaster planci individuals
+    sighted per tow. Fitted lines and confidence bands are mean
+    estimates plus or minus one standard error derived from general additive models (gam),
+    with a cubic regression and fifteen knots. For explanation of terminology and ranges of
+    values <a href="#">click here</a>
+</p>
+
+<p *ngIf="mantaExists && benthicExists">
+    Figure 1. Estimates of COTS (Acanthaster planci), benthic cover and fish abundance at {{reefName}}.
+    Data for manta tows are median hard coral cover and number of Acanthaster planci individuals
+    sighted per tow. Estimates for benthic data and fish abundance from permanent fixed transects
+    are raw means plus or minus one standard error. Fitted lines and confidence bands are mean
+    estimates plus or minus one standard error derived from general additive models (gam),
+    with a cubic regression and fifteen knots. For explanation of terminology and ranges of
+    values <a href="#">click here</a>
+</p>

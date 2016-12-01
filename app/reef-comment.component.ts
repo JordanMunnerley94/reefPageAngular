@@ -19,7 +19,7 @@ export class ReefCommentComponent implements OnInit {
         private route: ActivatedRoute) {}
 
     getReefData(id: string): void {
-        this.reefPageService.getData("18032S").then(reefData => {
+        this.reefPageService.getData(id).then(reefData => {
             this.reefData = reefData;
             this.reefComments = this.reefData.reefComment.comments;
 

@@ -11,6 +11,7 @@ import { ReefGraphsComponent } from "./reef-graphs.component";
 import { IndexPageComponent } from "./index-page.component";
 import { AppRoutingModule } from "./app-routing.module";
 import {AppComponent} from "./app.component";
+import {CapitalizePipe} from "./capitalize.pipe";
 
 @NgModule({
   imports:      [
@@ -25,7 +26,8 @@ import {AppComponent} from "./app.component";
       ReefZoneComponent,
       ReefTableComponent,
       ReefGraphsComponent,
-      IndexPageComponent
+      IndexPageComponent,
+      CapitalizePipe
   ],
   providers:    [ ReefPageService ],
   bootstrap:    [ AppComponent ]

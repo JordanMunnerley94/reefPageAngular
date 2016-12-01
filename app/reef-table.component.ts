@@ -147,6 +147,7 @@ export class ReefTableComponent {
                 }
             }
             for (let coralData of this.reefCoralDataDecade) {
+                // TODO Get proper field/column for decade coral data, currently we don't know the amount of transects
                 if (coralData.decade === currentDecade) {
                     currentDecadeData.coralAbundanceAvg = coralData.avgColonies;
                     currentDecadeData.coralAbundanceMin = coralData.minColonies;
