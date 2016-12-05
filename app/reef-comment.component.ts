@@ -24,8 +24,10 @@ export class ReefCommentComponent implements OnInit {
             this.reefComments = this.reefData.reefComment.comments;
 
             // Removing out of place <P> tags from the received comment.
-            this.reefComments = this.reefComments.replace('<P>', '');
-            this.reefComments = this.reefComments.replace('</P>', '');
+            if (this.reefComments !== null) {
+                this.reefComments = this.reefComments.replace('<P>', '');
+                this.reefComments = this.reefComments.replace('</P>', '');
+            }
         })
     };
 
