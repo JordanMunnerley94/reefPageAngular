@@ -1,7 +1,14 @@
 <h2>Maps</h2>
 <div *ngIf="!reefBoundsEmpty">
-    <div id="overview-map"></div>
-    <div id="detailed-map"></div>
-    <img src="http://maps.aims.gov.au/geoserver/ows?SERVICE=WMS&REQUEST=GetLegendGraphic&LAYER=aims%3ALatestMantaTowPath&FORMAT=image%2Fpng&STYLE=manta-tow-path-coral-cover"/>
+    <div class="row">
+        <div class="col-sm-6">
+            <div id="overview-map"></div>
+        </div>
+        <div class="col-sm-6">
+            <div id="detailed-map"></div>
+        </div>
+        <div class="col-sm-12">
+            <img style="display: block; margin: auto;" src="http://maps.aims.gov.au/geoserver/ows?SERVICE=WMS&REQUEST=GetLegendGraphic&LAYER=aims%3ALatestMantaTowPath&FORMAT=image%2Fpng&STYLE=manta-tow-path-coral-cover"/>
+        </div>
 </div>
 <p *ngIf="reefBoundsEmpty">No map data available</p>

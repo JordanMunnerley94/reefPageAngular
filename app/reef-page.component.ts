@@ -7,16 +7,12 @@ import {Location} from '@angular/common';
 import {ReefPageService} from "./reef-page.service";
 
 @Component({
+  moduleId: module.id,
   selector: 'my-reef-page',
-  template: `
-<h1>{{title}}</h1>
-<my-reefmaps></my-reefmaps>
-<my-reefzone></my-reefzone>
-<my-reeftable></my-reeftable>
-<my-reefgraphs></my-reefgraphs>
-<my-reefcomments></my-reefcomments>
-
-`,
+  templateUrl: 'reef-page.component.html',
+  styleUrls: [
+      'reef-page.component.css'
+  ],
 })
 export class ReefPageComponent implements OnInit {
 

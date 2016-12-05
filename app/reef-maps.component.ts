@@ -20,6 +20,9 @@ export class ReefMapsComponent implements OnInit {
     reefMapBounds: any;
     reefBoundsEmpty: any;
 
+    tileHeight: number = 256;
+    tileWidth: number = 256;
+
     WMSURL = "http://maps.aims.gov.au/geoserver/aims/wms?";
     opacityLevel : any;
     detailedMapParameters = [
@@ -36,8 +39,6 @@ export class ReefMapsComponent implements OnInit {
         "EXCEPTIONS=application%2Fvnd.ogc.se_inimage",
         "STYLES=Generic-map-pin-orange"
     ];
-    tileHeight: number = 256;
-    tileWidth: number = 256;
     wmsStandardParams = [
         "request=GetMap",
         "service=WMS",

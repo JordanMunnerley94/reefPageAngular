@@ -9,7 +9,7 @@ import {ReefPageService} from "./reef-page.service";
 @Component({
     selector: 'my-app',
     template: `
-    <h1>Reef Page App</h1>
+    <!--<h1>Reef Page App</h1>-->
     <router-outlet></router-outlet>
 `,
 })

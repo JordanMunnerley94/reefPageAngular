@@ -43,8 +43,12 @@ var ReefPageComponent = (function () {
     };
     ReefPageComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'my-reef-page',
-            template: "\n<h1>{{title}}</h1>\n<my-reefmaps></my-reefmaps>\n<my-reefzone></my-reefzone>\n<my-reeftable></my-reeftable>\n<my-reefgraphs></my-reefgraphs>\n<my-reefcomments></my-reefcomments>\n\n",
+            templateUrl: 'reef-page.component.html',
+            styleUrls: [
+                'reef-page.component.css'
+            ],
         }), 
         __metadata('design:paramtypes', [reef_page_service_1.ReefPageService, router_1.ActivatedRoute, common_1.Location])
     ], ReefPageComponent);
