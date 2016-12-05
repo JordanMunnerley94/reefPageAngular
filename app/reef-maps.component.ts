@@ -91,8 +91,9 @@ export class ReefMapsComponent implements OnInit {
         detailedBounds.extend(new google.maps.LatLng(data.south, data.west));
         detailedMap.fitBounds(detailedBounds);
 
-        this.overviewMapParameters.push("CQL_FILTER=gbrmpa_reef_id%3D14116");
-        this.detailedMapParameters.push("CQL_FILTER=reef_id='14116S';reef_id='14116S';reef_id='14116S';reef_id='14116S';reef_id='14116S'");
+        this.overviewMapParameters.push("CQL_FILTER=gbrmpa_reef_id%3D" + data.gbrmpaReefId);
+        this.detailedMapParameters.push("CQL_FILTER=reef_id='" + this.id + "';reef_id='" + this.id + "';reef_id='" + this.id + "" +
+            "';reef_id='" + this.id + "';reef_id='" + this.id + "'");
 
         this.loadWMS(overviewMap, this.WMSURL, this.overviewMapParameters);
         this.loadWMS(detailedMap, this.WMSURL, this.detailedMapParameters);
