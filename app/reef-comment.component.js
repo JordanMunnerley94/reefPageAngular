@@ -22,8 +22,10 @@ var ReefCommentComponent = (function () {
             _this.reefData = reefData;
             _this.reefComments = _this.reefData.reefComment.comments;
             // Removing out of place <P> tags from the received comment.
-            _this.reefComments = _this.reefComments.replace('<P>', '');
-            _this.reefComments = _this.reefComments.replace('</P>', '');
+            if (_this.reefComments !== null) {
+                _this.reefComments = _this.reefComments.replace('<P>', '');
+                _this.reefComments = _this.reefComments.replace('</P>', '');
+            }
         });
     };
     ;
