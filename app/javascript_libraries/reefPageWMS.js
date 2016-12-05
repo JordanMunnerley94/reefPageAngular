@@ -1,15 +1,58 @@
-/* 
-    Document   	: wms.js
+/*
+ Document   	: vars.js
 
-	Modified on : 18 Nov 2012
-	By			: "Sean Maday <seanmaday@gmail.com>"
+ Created on : 18 Nov 2012
+ Authored by	: "Sean Maday <seanmaday@gmail.com>"
 
-    Created on 	: Feb 16, 2011
-    Author     	: "Gavin Jackson <Gavin.Jackson@csiro.au>"
-    URL			: http://www.jacksondogphotography.com/googlewms/
+ */
 
-    Refactored code from http://lyceum.massgis.state.ma.us/wiki/doku.php?id=googlemapsv3:home
-*/
+//Be sure to end the WMS URL with a question mark!!!
+
+WMSURL = "http://maps.aims.gov.au/geoserver/aims/wms?"
+
+var opacityLevel;
+
+detailedMapParameters = [
+    "FORMAT=image/png",
+    "layers=aims:LatestMantaTowPath,aims:LatestMantaTowPath,aims:reefmon_sites,aims_aims:reef_zones_labels,aims_aims:reef_zones",
+    "SRS=EPSG:900913",
+    "EXCEPTIONS=application%2Fvnd.ogc.se_inimage",
+    "STYLES=manta-tow-path-coral-cover,manta-path-cots-star,rmrap-only,,"
+];
+
+overviewMapParameters = [
+    "FORMAT=image/png",
+    "layers=aims:reefmon_reefs",
+    "SRS=EPSG:900913",
+    "EXCEPTIONS=application%2Fvnd.ogc.se_inimage",
+    "STYLES=Generic-map-pin-orange"
+];
+
+
+tileHeight = 256;
+tileWidth = 256;
+
+wmsStandardParams = [
+    "request=GetMap",
+    "service=WMS",
+    "version=1.1.0",
+    "transparent=true",
+    "width="+ tileWidth,
+    "height="+ tileHeight
+];
+
+/*
+ Document   	: wms.js
+
+ Modified on : 18 Nov 2012
+ By			: "Sean Maday <seanmaday@gmail.com>"
+
+ Created on 	: Feb 16, 2011
+ Author     	: "Gavin Jackson <Gavin.Jackson@csiro.au>"
+ URL			: http://www.jacksondogphotography.com/googlewms/
+
+ Refactored code from http://lyceum.massgis.state.ma.us/wiki/doku.php?id=googlemapsv3:home
+ */
 
 function bound(value, opt_min, opt_max) {
     if (opt_min != null) value = Math.max(value, opt_min);
@@ -94,12 +137,9 @@ function loadWMS(map, baseURL, customParams) {
             var lLR_Longitude = lLRg.x;
             //GJ: there is a bug when crossing the -180 longitude border (tile does not render) - this check seems to fix it
             if (lLR_Longitude < lUL_Longitude) {
-              lLR_Longitude = Math.abs(lLR_Longitude);
+                lLR_Longitude = Math.abs(lLR_Longitude);
             }
             var urlResult = baseURL + wmsParams.join("&") + "&bbox=" + lUL_Longitude + "," + lUL_Latitude + "," + lLR_Longitude + "," + lLR_Latitude;
-            // console.log("Url Result:", urlResult)
-            // console.log("Merc", lLRg)
-            console.log(urlResult)
             return urlResult;
         },
 
@@ -112,10 +152,10 @@ function loadWMS(map, baseURL, customParams) {
     };
 
     overlayWMS = new google.maps.ImageMapType(overlayOptions);
+    console.log("Overlay WMS:");
+    console.log("Overlay WMS:", overlayWMS);
 
     //map.overlayMapTypes.insertAt(0, overlayWMS);
-    // map.overlayMapTypes.setAt(0, overlayWMS);
-	map.overlayMapTypes.push(overlayWMS);
-	console.log("After push")
+    map.overlayMapTypes.setAt(0, overlayWMS);
 }
 
