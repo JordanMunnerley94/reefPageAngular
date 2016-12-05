@@ -1,10 +1,10 @@
 <h2>Reef Zones</h2>
-<div *ngIf="usableReefZones.length === 0">
+<div *ngIf="reefZoneEmpty">
     <p>No zone data available.</p>
 </div>
     <ul class="reefZones">
         <li *ngFor="let reefZone of usableReefZones">
-            <a *ngIf="reefZone !== undefined"
+            <a *ngIf="!reefZoneEmpty"
                     href="http://data.aims.gov.au/waAesthetics/servaesthetics?fullReefID={{reefZone.fullreefId}}&zone={{reefZone.reefZoneCode}}">
                 <img src="http://data.aims.gov.au/reef-page-plots/photos/small/{{reefZone.photo}}">
                 <p>{{reefZone.reefZoneName}}</p>

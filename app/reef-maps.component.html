@@ -1,3 +1,5 @@
-<h1>Maps</h1>
-<div id="overview-map"></div>
-<div id="detailed-map"></div>
+<h2>Maps</h2>
+<div *ngIf="!reefBoundsEmpty" id="overview-map"></div>
+<div *ngIf="!reefBoundsEmpty" id="detailed-map"></div>
+<p *ngIf="reefBoundsEmpty">No map data available</p>
+<img src="http://maps.aims.gov.au/geoserver/ows?SERVICE=WMS&REQUEST=GetLegendGraphic&LAYER=aims%3ALatestMantaTowPath&FORMAT=image%2Fpng&STYLE=manta-tow-path-coral-cover"/>

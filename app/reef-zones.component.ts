@@ -15,6 +15,7 @@ export class ReefZoneComponent implements OnInit{
 
     reefData: any;
     reefZones: any[];
+    reefZoneEmpty: any;
     usableReefZones: any[] = [];
     id: string;
 
@@ -28,6 +29,8 @@ export class ReefZoneComponent implements OnInit{
             this.reefData = reefData;
             this.reefZones = reefData.photo;
             this.getUsableZones();
+            this.reefZoneEmpty = this.usableReefZones.length === 0;
+            console.log(this.reefZoneEmpty, this.reefZones);
         });
     };
 
@@ -48,7 +51,7 @@ export class ReefZoneComponent implements OnInit{
         }
 
         for (let zone of this.usableReefZones) {
-            if (zone !== undefined) {
+            if (zone !== null) {
                 switch (zone.reefZoneCode) {
                     case ("1"):
                         zone.reefZoneName = "Back";

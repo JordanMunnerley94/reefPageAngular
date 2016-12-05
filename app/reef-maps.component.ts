@@ -17,6 +17,7 @@ export class ReefMapsComponent implements OnInit {
 
     id: string;
     reefMapBounds: any;
+    reefBoundsEmpty: any;
 
     constructor(
         private reefPageService : ReefPageService,
@@ -65,7 +66,10 @@ export class ReefMapsComponent implements OnInit {
     getReefData(id: string): void {
         this.reefPageService.getData(id).then(reefData => {
             this.reefMapBounds = reefData.mantaPathBound;
-            this.drawMaps(this.reefMapBounds)
+            this.reefBoundsEmpty = this.reefMapBounds === null;
+            if (!this.reefBoundsEmpty) {
+                this.drawMaps(this.reefMapBounds);
+            }
         })
     };
 
