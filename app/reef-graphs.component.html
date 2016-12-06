@@ -1,12 +1,12 @@
 <h2>Reef Page Figures</h2>
 
-<img *ngIf="mantaExists" src="{{mantaGraphUrl}}" onerror="console.log('Picture Error 1')">
+<img *ngIf="mantaExists" src="{{mantaGraphUrl}}" onerror="this.onerror=null; this.style.display='none'">
 
-<img *ngIf="benthicExists" src="{{benthicGraphUrl}}" onerror="console.log('Picture Error 2')">
+<img *ngIf="benthicExists" src="{{benthicGraphUrl}}" onerror="this.onerror=null; this.style.display='none'">
 
-<img *ngIf="benthicExists" src="{{fishSizeGraphUrl}}" onerror="console.log('Picture Error 3')">
+<img *ngIf="benthicExists" src="{{fishSizeGraphUrl}}" onerror="this.onerror=null; this.style.display='none'">
 
-<img *ngIf="benthicExists" src="{{fishHerbGraphUrl}}" onerror="console.log('Picture Error 4')">
+<img *ngIf="benthicExists" src="{{fishHerbGraphUrl}}" onerror="this.onerror=null; this.style.display='none'">
 
 <p *ngIf="!mantaExists ">
     Figure 1. Estimates of benthic cover and fish abundance at {{reefName}}.
