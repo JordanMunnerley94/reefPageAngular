@@ -118,7 +118,6 @@ export class ReefMapsComponent implements OnInit {
         //add additional parameters
         let wmsParams = this.wmsStandardParams.concat(customParams);
 
-        console.log(wmsParams)
 
         let overlayOptions = {
             getTileUrl: function(coord: any, zoom: any) {
@@ -140,9 +139,6 @@ export class ReefMapsComponent implements OnInit {
                     lLR_Longitude = Math.abs(lLR_Longitude);
                 }
                 let urlResult = baseURL + wmsParams.join("&") + "&bbox=" + lUL_Longitude + "," + lUL_Latitude + "," + lLR_Longitude + "," + lLR_Latitude;
-                // console.log("Url Result: ", urlResult);
-                // console.log("Merc", lLRg)
-                console.log(urlResult)
                 return urlResult;
             },
 
@@ -156,7 +152,6 @@ export class ReefMapsComponent implements OnInit {
 
         let overlayWMS = new google.maps.ImageMapType(overlayOptions);
 
-        console.log(overlayWMS);
 
         // map.overlayMapTypes.push(overlayWMS)
         //map.overlayMapTypes.insertAt(0, overlayWMS);

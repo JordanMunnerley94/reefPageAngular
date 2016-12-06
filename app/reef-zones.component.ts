@@ -50,7 +50,9 @@ export class ReefZoneComponent implements OnInit{
         }
 
         for (let zone of this.usableReefZones) {
-            if (zone !== null) {
+
+
+            if (zone != undefined) {
                 switch (zone.reefZoneCode) {
                     case ("1"):
                         zone.reefZoneName = "Back";

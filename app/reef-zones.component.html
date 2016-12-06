@@ -4,7 +4,7 @@
 </div>
     <ul class="reefZones">
         <li *ngFor="let reefZone of usableReefZones">
-            <a *ngIf="!reefZoneEmpty"
+            <a *ngIf="!reefZoneEmpty && reefZone !== undefined"
                     href="http://data.aims.gov.au/waAesthetics/servaesthetics?fullReefID={{reefZone.fullreefId}}&zone={{reefZone.reefZoneCode}}">
                 <img src="http://data.aims.gov.au/reef-page-plots/photos/small/{{reefZone.photo}}">
                 <p>{{reefZone.reefZoneName}}</p>
