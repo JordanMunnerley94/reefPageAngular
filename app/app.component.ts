@@ -1,10 +1,7 @@
 import 'rxjs/add/operator/switchMap';
 
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
-import {Location} from '@angular/common';
-
-import {ReefPageService} from "./reef-page.service";
+import {Router, NavigationEnd} from '@angular/router';
 
 @Component({
     selector: 'my-app',
@@ -13,4 +10,16 @@ import {ReefPageService} from "./reef-page.service";
 `,
 })
 
-export class AppComponent { }
+export class AppComponent implements OnInit {
+
+    constructor(private router: Router) {}
+
+    ngOnInit() {
+        this.router.events.subscribe((evt) => {
+            if (!(evt instanceof NavigationEnd)) {
+                return;
+            }
+            document.body.scrollTop = 0;
+        });
+    }
+}

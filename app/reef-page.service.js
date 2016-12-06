@@ -14,8 +14,8 @@ require('rxjs/add/operator/toPromise');
 var ReefPageService = (function () {
     function ReefPageService(http) {
         this.http = http;
-        this.indexDataUrl = "http://localhost:8080/reefs?size=500&sort=reefName";
-        this.specificReefPageUrl = "http://localhost:8080/reefpage?reefid=";
+        this.indexDataUrl = "http://adctest.aims.gov.au:8080/reefpage-service/reefs?size=500&sort=reefName";
+        this.specificReefPageUrl = "http://adctest.aims.gov.au:8080/reefpage-service/reefpage?reefid=";
     }
     ReefPageService.prototype.getIndexEntries = function () {
         return this.http.get(this.indexDataUrl)

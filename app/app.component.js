@@ -10,15 +10,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 require('rxjs/add/operator/switchMap');
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(router) {
+        this.router = router;
     }
+    AppComponent.prototype.ngOnInit = function () {
+        this.router.events.subscribe(function (evt) {
+            if (!(evt instanceof router_1.NavigationEnd)) {
+                return;
+            }
+            document.body.scrollTop = 0;
+        });
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
             template: "\n    <router-outlet></router-outlet>\n",
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.Router])
     ], AppComponent);
     return AppComponent;
 }());

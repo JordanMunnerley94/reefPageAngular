@@ -7,8 +7,8 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class ReefPageService {
 
-    private indexDataUrl = "http://localhost:8080/reefs?size=500&sort=reefName";
-    private specificReefPageUrl = "http://localhost:8080/reefpage?reefid=";
+    private indexDataUrl = "http://adctest.aims.gov.au:8080/reefpage-service/reefs?size=500&sort=reefName";
+    private specificReefPageUrl = "http://adctest.aims.gov.au:8080/reefpage-service/reefpage?reefid=";
 
     constructor (private http : Http) {}
 
