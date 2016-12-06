@@ -22,6 +22,7 @@ export class ReefPageService {
     }
 
     getData(id: string): Promise<any> {
+        console.log("Service Called");
         return this.http.get(this.specificReefPageUrl + id)
             .toPromise()
             .then(res => res.json() as any)

@@ -84,8 +84,8 @@ export class ReefMapsComponent implements OnInit {
         // Creates maps
 
         let overviewMap = new google.maps.Map(document.getElementById("overview-map"), myOptions);
-        let detailedMap = new google.maps.Map(document.getElementById("detailed-map"), myOptions);
 
+        let detailedMap = new google.maps.Map(document.getElementById("detailed-map"), myOptions);
 
         // Sets lat-lng for detailed map
         let detailedBounds = new google.maps.LatLngBounds();
@@ -103,10 +103,11 @@ export class ReefMapsComponent implements OnInit {
 
     getReefData(id: string): void {
         this.reefPageService.getData(id).then(reefData => {
+        console.log("Reefdata in maps", reefData);
             this.reefName = reefData.reef.reefName;
             this.reefMapBounds = reefData.mantaPathBound;
             this.reefBoundsEmpty = this.reefMapBounds === null;
-            if (!this.reefBoundsEmpty) {
+        if (!this.reefBoundsEmpty) {
                 this.drawMaps(this.reefMapBounds)
             }
         })

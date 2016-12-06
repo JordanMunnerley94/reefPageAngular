@@ -18,13 +18,14 @@ var ReefPageComponent = (function () {
         this.reefPageService = reefPageService;
         this.route = route;
         this.location = location;
+        this.testString = "test";
         this.title = 'Reef Page Test';
     }
     ReefPageComponent.prototype.getReefData = function (id) {
         var _this = this;
         this.reefPageService.getData(id).then(function (reefData) {
             _this.reefData = reefData;
-            console.log("Reef Data : ", reefData);
+            console.log("Parent Reef Data : ", reefData);
             _this.title = reefData.reef.reefName + " PAGE.";
         });
     };
@@ -39,6 +40,7 @@ var ReefPageComponent = (function () {
             _this.id = params['reefid'];
             _this.getReefData(_this.id);
         });
+        // this.reefData = this.route.snapshot.data['reefData'];
         console.log(this.id);
         // console.log()
     };

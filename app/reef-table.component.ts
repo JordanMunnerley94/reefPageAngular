@@ -44,8 +44,10 @@ export class ReefTableComponent {
     ) {}
 
     getReefData(id: string): void {
-        this.reefPageService.getData(id).then(reefData => {
-            this.reefTableData = reefData;
+        // this.reefPageService.getData(id).then(reefData => {
+        //     this.reefTableData = reefData;
+
+        let reefData = this.route.snapshot.data['reefData'];
 
             this.reefMantaDataDecade = reefData.mantaByDecade;
             this.reefCoralDataDecade = reefData.juvenileCoralByDecade;
@@ -61,7 +63,7 @@ export class ReefTableComponent {
             this.getColumnDataDecades();
             this.getColumnHeadersYears();
             this.getColumnDataYears();
-        });
+        // });
     };
 
     ngOnInit(): void {

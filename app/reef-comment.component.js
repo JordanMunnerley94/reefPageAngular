@@ -17,16 +17,16 @@ var ReefCommentComponent = (function () {
         this.route = route;
     }
     ReefCommentComponent.prototype.getReefData = function (id) {
-        var _this = this;
-        this.reefPageService.getData(id).then(function (reefData) {
-            _this.reefData = reefData;
-            _this.reefCommentEmpty = _this.reefData.reefComment === null;
-            if (!_this.reefCommentEmpty) {
-                _this.reefComments = _this.reefData.reefComment.comments;
-                _this.reefComments = _this.reefComments.replace('<P>', '');
-                _this.reefComments = _this.reefComments.replace('</P>', '');
-            }
-        });
+        // this.reefPageService.getData(id).then(reefData => {
+        //     this.reefData = reefData;
+        this.reefData = this.route.snapshot.data['reefData'];
+        this.reefCommentEmpty = this.reefData.reefComment === null;
+        if (!this.reefCommentEmpty) {
+            this.reefComments = this.reefData.reefComment.comments;
+            this.reefComments = this.reefComments.replace('<P>', '');
+            this.reefComments = this.reefComments.replace('</P>', '');
+        }
+        // })
     };
     ;
     ReefCommentComponent.prototype.ngOnInit = function () {

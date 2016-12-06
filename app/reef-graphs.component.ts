@@ -33,15 +33,16 @@ export class ReefGraphsComponent implements OnInit{
     ) {};
 
     getReefData(id: string): void {
-        this.reefPageService.getData(id).then(reefData => {
-            this.reefData = reefData;
-            this.reefPhoto = reefData.photo;
+        // this.reefPageService.getData(id).then(reefData => {
+        //     this.reefData = reefData;
+        this.reefData = this.route.snapshot.data['reefData'];
+            this.reefPhoto = this.reefData.photo;
             // this.reefId = this.reefPhoto[0].fullreefId;
             this.generateUrls(this.id);
             this.benthicExists = this.checkBenthicDataExists();
             this.mantaExists = this.checkMantaDataExists();
-            this.reefName = reefData.reef.reefName;
-        });
+            this.reefName = this.reefData.reef.reefName;
+        // });
     };
 
     ngOnInit(): void {

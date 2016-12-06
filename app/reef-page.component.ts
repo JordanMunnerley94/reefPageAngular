@@ -16,6 +16,8 @@ import {ReefPageService} from "./reef-page.service";
 })
 export class ReefPageComponent implements OnInit {
 
+  public testString: string = "test"
+
   public reefData: any;
 
   private id: string;
@@ -32,7 +34,7 @@ export class ReefPageComponent implements OnInit {
   getReefData(id: string): void {
     this.reefPageService.getData(id).then(reefData => {
       this.reefData = reefData;
-      console.log("Reef Data : ", reefData);
+      console.log("Parent Reef Data : ", reefData);
       this.title = reefData.reef.reefName + " PAGE.";
     });
   };
@@ -47,6 +49,8 @@ export class ReefPageComponent implements OnInit {
       this.id = params['reefid'];
       this.getReefData(this.id);
     });
+
+    // this.reefData = this.route.snapshot.data['reefData'];
 
     console.log(this.id)
     // console.log()

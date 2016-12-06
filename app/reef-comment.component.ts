@@ -20,15 +20,16 @@ export class ReefCommentComponent implements OnInit {
         private route: ActivatedRoute) {}
 
     getReefData(id: string): void {
-        this.reefPageService.getData(id).then(reefData => {
-            this.reefData = reefData;
+        // this.reefPageService.getData(id).then(reefData => {
+        //     this.reefData = reefData;
+        this.reefData = this.route.snapshot.data['reefData'];
             this.reefCommentEmpty = this.reefData.reefComment === null;
             if (!this.reefCommentEmpty) {
                 this.reefComments = this.reefData.reefComment.comments;
                     this.reefComments = this.reefComments.replace('<P>', '');
                     this.reefComments = this.reefComments.replace('</P>', '');
             }
-        })
+        // })
     };
 
     ngOnInit(): void {

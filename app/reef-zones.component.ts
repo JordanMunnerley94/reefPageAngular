@@ -25,12 +25,13 @@ export class ReefZoneComponent implements OnInit{
 ) {}
 
     getReefData(id: string): void {
-        this.reefPageService.getData(id).then(reefData => {
-            this.reefData = reefData;
-            this.reefZones = reefData.photo;
-            this.getUsableZones();
-            this.reefZoneEmpty = this.usableReefZones.length === 0;
-        });
+        // this.reefPageService.getData(id).then(reefData => {
+        let reefData = this.route.snapshot.data['reefData'];
+        this.reefData = reefData;
+        this.reefZones = reefData.photo;
+        this.getUsableZones();
+        this.reefZoneEmpty = this.usableReefZones.length === 0;
+        // });
     };
 
     ngOnInit(): void {

@@ -26,6 +26,7 @@ var ReefPageService = (function () {
             .catch(this.handleError);
     };
     ReefPageService.prototype.getData = function (id) {
+        console.log("Service Called");
         return this.http.get(this.specificReefPageUrl + id)
             .toPromise()
             .then(function (res) { return res.json(); })
