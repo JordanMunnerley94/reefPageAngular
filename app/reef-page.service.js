@@ -12,11 +12,9 @@ var core_1 = require("@angular/core");
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
 var ReefPageService = (function () {
-    // private reefPageUrl = "http://localhost:8080/reefpage?reefid=13093A";
     function ReefPageService(http) {
         this.http = http;
         this.indexDataUrl = "http://localhost:8080/reefs?size=500&sort=reefName";
-        this.reefPageUrl = "http://localhost:8080/reefpage?reefid=18032S";
         this.specificReefPageUrl = "http://localhost:8080/reefpage?reefid=";
     }
     ReefPageService.prototype.getIndexEntries = function () {
@@ -26,14 +24,12 @@ var ReefPageService = (function () {
             .catch(this.handleError);
     };
     ReefPageService.prototype.getData = function (id) {
-        console.log("Service Called");
         return this.http.get(this.specificReefPageUrl + id)
             .toPromise()
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
     ReefPageService.prototype.handleError = function (error) {
-        console.error('An error reading JSON occurred', error);
         return Promise.reject(error.message || error);
     };
     ReefPageService = __decorate([

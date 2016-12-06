@@ -8,9 +8,7 @@ import 'rxjs/add/operator/toPromise';
 export class ReefPageService {
 
     private indexDataUrl = "http://localhost:8080/reefs?size=500&sort=reefName";
-    private reefPageUrl = "http://localhost:8080/reefpage?reefid=18032S";
     private specificReefPageUrl = "http://localhost:8080/reefpage?reefid=";
-    // private reefPageUrl = "http://localhost:8080/reefpage?reefid=13093A";
 
     constructor (private http : Http) {}
 
@@ -22,7 +20,6 @@ export class ReefPageService {
     }
 
     getData(id: string): Promise<any> {
-        console.log("Service Called");
         return this.http.get(this.specificReefPageUrl + id)
             .toPromise()
             .then(res => res.json() as any)
@@ -30,7 +27,6 @@ export class ReefPageService {
     }
 
     handleError(error: any): Promise<any> {
-        console.error('An error reading JSON occurred', error);
         return Promise.reject(error.message || error);
     }
 }

@@ -9,16 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var reef_page_service_1 = require("./reef-page.service");
 var router_1 = require("@angular/router");
 var ReefCommentComponent = (function () {
-    function ReefCommentComponent(reefPageService, route) {
-        this.reefPageService = reefPageService;
+    function ReefCommentComponent(route) {
         this.route = route;
     }
-    ReefCommentComponent.prototype.getReefData = function (id) {
-        // this.reefPageService.getData(id).then(reefData => {
-        //     this.reefData = reefData;
+    ReefCommentComponent.prototype.ngOnInit = function () {
         this.reefData = this.route.snapshot.data['reefData'];
         this.reefCommentEmpty = this.reefData.reefComment === null;
         if (!this.reefCommentEmpty) {
@@ -26,15 +22,6 @@ var ReefCommentComponent = (function () {
             this.reefComments = this.reefComments.replace('<P>', '');
             this.reefComments = this.reefComments.replace('</P>', '');
         }
-        // })
-    };
-    ;
-    ReefCommentComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.route.params.subscribe(function (params) {
-            _this.id = params['reefid'];
-            _this.getReefData(_this.id);
-        });
     };
     ReefCommentComponent = __decorate([
         core_1.Component({
@@ -43,7 +30,7 @@ var ReefCommentComponent = (function () {
             templateUrl: 'reef-comment.component.html',
             styleUrls: ['reef-comment.component.css'],
         }), 
-        __metadata('design:paramtypes', [reef_page_service_1.ReefPageService, router_1.ActivatedRoute])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute])
     ], ReefCommentComponent);
     return ReefCommentComponent;
 }());

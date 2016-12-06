@@ -19,40 +19,25 @@ export class ReefZoneComponent implements OnInit{
     usableReefZones: any[] = [];
     id: string;
 
-    constructor(
-        private reefPageService: ReefPageService,
-        private route: ActivatedRoute
-) {}
+    constructor(private route: ActivatedRoute) {}
 
-    getReefData(id: string): void {
-        // this.reefPageService.getData(id).then(reefData => {
+
+    ngOnInit(): void {
         let reefData = this.route.snapshot.data['reefData'];
         this.reefData = reefData;
         this.reefZones = reefData.photo;
         this.getUsableZones();
         this.reefZoneEmpty = this.usableReefZones.length === 0;
-        // });
-    };
-
-    ngOnInit(): void {
-        this.route.params.subscribe(params => {
-            this.id = params['reefid'];
-            this.getReefData(this.id);
-        });
     }
 
     getUsableZones(): void {
-
         for(let zone of this.reefZones) {
             let i = parseInt(zone.reefZoneCode) - 1;
             if (i < 4) {
                 this.usableReefZones[i] = zone;
             }
         }
-
         for (let zone of this.usableReefZones) {
-
-
             if (zone != undefined) {
                 switch (zone.reefZoneCode) {
                     case ("1"):

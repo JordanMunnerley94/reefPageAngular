@@ -49,10 +49,6 @@ export class ReefMapsComponent implements OnInit {
         "height="+ this.tileHeight
     ];
 
-    // pixelOrigin_ : any;
-    // pixelsPerLonDegree_ : any;
-    // pixelsPerLonRadian_ : any;
-
     constructor(
         private reefPageService : ReefPageService,
         private route : ActivatedRoute) {}
@@ -61,9 +57,7 @@ export class ReefMapsComponent implements OnInit {
         this.route.params.subscribe(params => {
             this.id = params['reefid'];
             this.getReefData(this.id);
-            // this.drawMaps(this.reefMapBounds)
         });
-
     }
 
     drawMaps(data: any) {
@@ -82,9 +76,7 @@ export class ReefMapsComponent implements OnInit {
         };
 
         // Creates maps
-
         let overviewMap = new google.maps.Map(document.getElementById("overview-map"), myOptions);
-
         let detailedMap = new google.maps.Map(document.getElementById("detailed-map"), myOptions);
 
         // Sets lat-lng for detailed map
@@ -103,11 +95,10 @@ export class ReefMapsComponent implements OnInit {
 
     getReefData(id: string): void {
         this.reefPageService.getData(id).then(reefData => {
-        console.log("Reefdata in maps", reefData);
             this.reefName = reefData.reef.reefName;
             this.reefMapBounds = reefData.mantaPathBound;
             this.reefBoundsEmpty = this.reefMapBounds === null;
-        if (!this.reefBoundsEmpty) {
+            if (!this.reefBoundsEmpty) {
                 this.drawMaps(this.reefMapBounds)
             }
         })
@@ -118,15 +109,13 @@ export class ReefMapsComponent implements OnInit {
         let minZoomLevel = 2;
         let maxZoomLevel = 28;
 
-        //add additional parameters
+        // add additional parameters
         let wmsParams = this.wmsStandardParams.concat(customParams);
-
 
         let overlayOptions = {
             getTileUrl: function(coord: any, zoom: any) {
                 let lULP = new google.maps.Point(coord.x*256,(coord.y+1)*256);
                 let lLRP = new google.maps.Point((coord.x+1)*256,coord.y*256);
-
 
                 let projectionMap = new MercatorProjection();
 
@@ -146,7 +135,6 @@ export class ReefMapsComponent implements OnInit {
             },
 
             tileSize: new google.maps.Size(this.tileHeight, this.tileWidth),
-
             minZoom: minZoomLevel,
             maxZoom: maxZoomLevel,
             opacity: parseFloat(this.opacityLevel),
@@ -155,9 +143,6 @@ export class ReefMapsComponent implements OnInit {
 
         let overlayWMS = new google.maps.ImageMapType(overlayOptions);
 
-
-        // map.overlayMapTypes.push(overlayWMS)
-        //map.overlayMapTypes.insertAt(0, overlayWMS);
         map.overlayMapTypes.setAt(0, overlayWMS);
     }
 }

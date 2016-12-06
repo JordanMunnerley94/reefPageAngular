@@ -22,8 +22,7 @@ var app_routing_module_1 = require("./app-routing.module");
 var app_component_1 = require("./app.component");
 var capitalize_pipe_1 = require("./capitalize.pipe");
 var reef_maps_component_1 = require("./reef-maps.component");
-var test_component_1 = require("./test.component");
-var test_resolver_1 = require("./test.resolver");
+var reef_resolver_1 = require("./reef.resolver");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -43,12 +42,11 @@ var AppModule = (function () {
                 reef_graphs_component_1.ReefGraphsComponent,
                 index_page_component_1.IndexPageComponent,
                 reef_maps_component_1.ReefMapsComponent,
-                test_component_1.TestComponent,
                 capitalize_pipe_1.CapitalizePipe
             ],
             providers: [
                 reef_page_service_1.ReefPageService,
-                test_resolver_1.TestResolver
+                reef_resolver_1.ReefResolver
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

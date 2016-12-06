@@ -1,5 +1,4 @@
 import {Component, OnInit} from "@angular/core";
-import {ReefPageService} from "./reef-page.service";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
@@ -13,7 +12,6 @@ import {ActivatedRoute} from "@angular/router";
 
 export class ReefGraphsComponent implements OnInit{
 
-    // URLs without id + .png on end
     benthicGraphUrl: string;
     fishHerbGraphUrl: string;
     mantaGraphUrl: string;
@@ -28,28 +26,18 @@ export class ReefGraphsComponent implements OnInit{
     reefName: string;
 
     constructor(
-        private reefPageService: ReefPageService,
         private route: ActivatedRoute
     ) {};
 
-    getReefData(id: string): void {
-        // this.reefPageService.getData(id).then(reefData => {
-        //     this.reefData = reefData;
-        this.reefData = this.route.snapshot.data['reefData'];
-            this.reefPhoto = this.reefData.photo;
-            // this.reefId = this.reefPhoto[0].fullreefId;
-            this.generateUrls(this.id);
-            this.benthicExists = this.checkBenthicDataExists();
-            this.mantaExists = this.checkMantaDataExists();
-            this.reefName = this.reefData.reef.reefName;
-        // });
-    };
-
     ngOnInit(): void {
-        this.route.params.subscribe(params => {
-            this.id = params['reefid'];
-            this.getReefData(this.id);
-        });
+        this.reefData = this.route.snapshot.data['reefData'];
+        this.id = this.route.snapshot.params['reefid'];
+
+        this.reefPhoto = this.reefData.photo;
+        this.generateUrls(this.id);
+        this.benthicExists = this.checkBenthicDataExists();
+        this.mantaExists = this.checkMantaDataExists();
+        this.reefName = this.reefData.reef.reefName;
     }
 
     generateUrls(id: string): void {

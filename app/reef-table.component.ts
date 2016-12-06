@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 
 import {ReefPageService} from "./reef-page.service";
 import {TableDecadeData} from "./table-decade-data";
@@ -14,7 +14,7 @@ import {ActivatedRoute} from "@angular/router";
     ],
 })
 
-export class ReefTableComponent {
+export class ReefTableComponent implements OnInit{
 
     id: string;
 
@@ -39,38 +39,26 @@ export class ReefTableComponent {
     yearColumnData:  TableYearData[] = [];
 
     constructor(
-        private reefPageService: ReefPageService,
         private route: ActivatedRoute
     ) {}
 
-    getReefData(id: string): void {
-        // this.reefPageService.getData(id).then(reefData => {
-        //     this.reefTableData = reefData;
-
+    ngOnInit(): void {
         let reefData = this.route.snapshot.data['reefData'];
 
-            this.reefMantaDataDecade = reefData.mantaByDecade;
-            this.reefCoralDataDecade = reefData.juvenileCoralByDecade;
-            this.reefFishDataDecade = reefData.fishByDecade;
-            this.reefBenthicDataDecade = reefData.benthicGroupByDecade;
+        this.reefMantaDataDecade = reefData.mantaByDecade;
+        this.reefCoralDataDecade = reefData.juvenileCoralByDecade;
+        this.reefFishDataDecade = reefData.fishByDecade;
+        this.reefBenthicDataDecade = reefData.benthicGroupByDecade;
 
-            this.reefMantaDataYear = reefData.mantaByYear;
-            this.reefCoralDataYear = reefData.juvenileCoralByYear;
-            this.reefFishDataYear = reefData.fishByYear;
-            this.reefBenthicDataYear = reefData.benthicGroupByYear;
+        this.reefMantaDataYear = reefData.mantaByYear;
+        this.reefCoralDataYear = reefData.juvenileCoralByYear;
+        this.reefFishDataYear = reefData.fishByYear;
+        this.reefBenthicDataYear = reefData.benthicGroupByYear;
 
-            this.getColumnHeadersDecades();
-            this.getColumnDataDecades();
-            this.getColumnHeadersYears();
-            this.getColumnDataYears();
-        // });
-    };
-
-    ngOnInit(): void {
-        this.route.params.subscribe(params => {
-            this.id = params['reefid'];
-            this.getReefData(this.id);
-        });
+        this.getColumnHeadersDecades();
+        this.getColumnDataDecades();
+        this.getColumnHeadersYears();
+        this.getColumnDataYears();
     }
 
     getColumnHeadersDecades(): void {
@@ -88,17 +76,8 @@ export class ReefTableComponent {
             }
         }
 
-        // if (this.reefFishDataDecade.length !== 0) {
-        //     for (let current of this.reefFishDataDecade) {
-        //         if (this.decadeColumnHeaders.indexOf(current.decade) < 0) {
-        //             this.decadeColumnHeaders.push(current.decade)
-        //         }
-        //     }
-        // }
-
         this.decadeColumnHeaders.sort();
     }
-
 
     getColumnHeadersYears(): void {
         if (this.reefMantaDataYear.length !== 0) {
@@ -113,15 +92,6 @@ export class ReefTableComponent {
                 }
             }
         }
-
-        // if (this.reefFishDataYear.length !== 0) {
-        //     for (let current of this.reefFishDataYear) {
-        //         if (this.yearColumnHeaders.indexOf(current.reportYear) < 0) {
-        //             this.yearColumnHeaders.push(current.reportYear)
-        //         }
-        //     }
-        // }
-
         this.yearColumnHeaders.sort();
     }
 

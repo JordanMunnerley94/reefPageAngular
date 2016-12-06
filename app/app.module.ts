@@ -13,8 +13,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import {AppComponent} from "./app.component";
 import {CapitalizePipe} from "./capitalize.pipe";
 import {ReefMapsComponent} from "./reef-maps.component";
-import {TestComponent} from "./test.component";
-import {TestResolver} from "./test.resolver";
+import {ReefResolver} from "./reef.resolver";
 
 @NgModule({
   imports:      [
@@ -31,12 +30,11 @@ import {TestResolver} from "./test.resolver";
       ReefGraphsComponent,
       IndexPageComponent,
       ReefMapsComponent,
-      TestComponent,
       CapitalizePipe
   ],
   providers:    [
       ReefPageService,
-      TestResolver
+      ReefResolver
   ],
   bootstrap:    [ AppComponent ]
 

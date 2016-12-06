@@ -15,7 +15,6 @@ export class IndexPageComponent implements OnInit {
 
     reefNameData: any[] = [];
     reefNames: any[] = [];
-    selectedReefComment: IndexEntry;
 
     constructor(
         private router: Router,
@@ -27,7 +26,6 @@ export class IndexPageComponent implements OnInit {
             .then(reefDetails => {
                 this.reefNameData = reefDetails;
                 this.generateReefNames(this.reefNameData);
-                console.log(this.reefNames);
             })
     };
 
@@ -44,7 +42,6 @@ export class IndexPageComponent implements OnInit {
     }
 
     goToDetail(indexEntry: IndexEntry): void {
-        console.log(indexEntry);
         this.router.navigate(['/reefpage', indexEntry.fullreefId])
     }
 

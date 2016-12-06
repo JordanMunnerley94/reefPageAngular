@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {ReefPageService} from "./reef-page.service";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
@@ -15,27 +14,15 @@ export class ReefCommentComponent implements OnInit {
     reefCommentEmpty: any;
     id: string;
 
-    constructor(
-        private reefPageService: ReefPageService,
-        private route: ActivatedRoute) {}
-
-    getReefData(id: string): void {
-        // this.reefPageService.getData(id).then(reefData => {
-        //     this.reefData = reefData;
-        this.reefData = this.route.snapshot.data['reefData'];
-            this.reefCommentEmpty = this.reefData.reefComment === null;
-            if (!this.reefCommentEmpty) {
-                this.reefComments = this.reefData.reefComment.comments;
-                    this.reefComments = this.reefComments.replace('<P>', '');
-                    this.reefComments = this.reefComments.replace('</P>', '');
-            }
-        // })
-    };
+    constructor(private route: ActivatedRoute) {}
 
     ngOnInit(): void {
-        this.route.params.subscribe(params => {
-            this.id = params['reefid'];
-            this.getReefData(this.id);
-        });
+        this.reefData = this.route.snapshot.data['reefData'];
+        this.reefCommentEmpty = this.reefData.reefComment === null;
+        if (!this.reefCommentEmpty) {
+            this.reefComments = this.reefData.reefComment.comments;
+            this.reefComments = this.reefComments.replace('<P>', '');
+            this.reefComments = this.reefComments.replace('</P>', '');
+        }
     }
 }

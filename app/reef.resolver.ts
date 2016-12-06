@@ -1,9 +1,9 @@
 import {Injectable} from "@angular/core";
-import {Resolve, ActivatedRouteSnapshot, RouterStateSnapshot} from "@angular/router";
+import {Resolve, ActivatedRouteSnapshot} from "@angular/router";
 import {ReefPageService} from "./reef-page.service";
 
 @Injectable()
-export class TestResolver implements Resolve<any> {
+export class ReefResolver implements Resolve<any> {
 
     constructor (
         private reefService: ReefPageService

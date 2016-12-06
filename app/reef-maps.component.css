@@ -1,8 +1,6 @@
 #detailed-map, #overview-map {
     height: 300px;
     width: 300px;
-    /*height: 90%;*/
-    /*width: 90%;*/
 }
 
 #map-legend, #detailed-map, #overview-map {
