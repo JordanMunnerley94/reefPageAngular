@@ -16,7 +16,7 @@ var ReefCommentComponent = (function () {
     }
     ReefCommentComponent.prototype.ngOnInit = function () {
         this.reefData = this.route.snapshot.data['reefData'];
-        this.reefCommentEmpty = this.reefData.reefComment === null;
+        this.reefCommentEmpty = this.reefData.reefComment != undefined;
         if (!this.reefCommentEmpty) {
             this.reefComments = this.reefData.reefComment.comments;
             this.reefComments = this.reefComments.replace('<P>', '');

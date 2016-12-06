@@ -15,12 +15,8 @@ import {ReefPageService} from "./reef-page.service";
 })
 export class ReefPageComponent implements OnInit {
 
-  public testString: string = "test"
-
   public reefData: any;
-
   private id: string;
-
   public title: String = 'Reef Page Test';
 
   constructor(
@@ -36,7 +32,6 @@ export class ReefPageComponent implements OnInit {
   };
 
   ngOnInit(): void {
-
     this.route.params.subscribe(params => {
       this.id = params['reefid'];
       this.getReefData(this.id);

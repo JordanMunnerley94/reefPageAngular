@@ -18,8 +18,6 @@ export class ReefTableComponent implements OnInit{
 
     id: string;
 
-    reefTableData: any[];
-
     reefFishDataYear: any[];
     reefFishDataDecade: any[];
 
