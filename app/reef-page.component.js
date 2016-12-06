@@ -16,7 +16,6 @@ var ReefPageComponent = (function () {
     function ReefPageComponent(reefPageService, route) {
         this.reefPageService = reefPageService;
         this.route = route;
-        this.testString = "test";
         this.title = 'Reef Page Test';
     }
     ReefPageComponent.prototype.getReefData = function (id) {

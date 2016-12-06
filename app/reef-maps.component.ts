@@ -97,7 +97,7 @@ export class ReefMapsComponent implements OnInit {
         this.reefPageService.getData(id).then(reefData => {
             this.reefName = reefData.reef.reefName;
             this.reefMapBounds = reefData.mantaPathBound;
-            this.reefBoundsEmpty = this.reefMapBounds != undefined;
+            this.reefBoundsEmpty = this.reefMapBounds == undefined;
             if (!this.reefBoundsEmpty) {
                 this.drawMaps(this.reefMapBounds)
             }

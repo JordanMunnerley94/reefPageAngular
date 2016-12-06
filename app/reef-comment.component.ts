@@ -18,7 +18,7 @@ export class ReefCommentComponent implements OnInit {
 
     ngOnInit(): void {
         this.reefData = this.route.snapshot.data['reefData'];
-        this.reefCommentEmpty = this.reefData.reefComment != undefined;
+        this.reefCommentEmpty = this.reefData.reefComment == undefined;
         if (!this.reefCommentEmpty) {
             this.reefComments = this.reefData.reefComment.comments;
             this.reefComments = this.reefComments.replace('<P>', '');
