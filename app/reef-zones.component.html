@@ -1,13 +1,24 @@
-<h2>Reef Zones</h2>
+<h2 style="text-align: center">Reef Zones</h2>
 <div *ngIf="reefZoneEmpty">
     <p>No zone data available.</p>
 </div>
-    <ul class="reefZones">
-        <li *ngFor="let reefZone of usableReefZones">
-            <a *ngIf="!reefZoneEmpty && reefZone !== undefined"
-                    href="http://data.aims.gov.au/waAesthetics/servaesthetics?fullReefID={{reefZone.fullreefId}}&zone={{reefZone.reefZoneCode}}">
-                <img src="http://data.aims.gov.au/reef-page-plots/photos/small/{{reefZone.photo}}">
-                <p>{{reefZone.reefZoneName}}</p>
-            </a>
-        </li>
-    </ul>
+<div class="reefZonesContainer">
+    <div *ngFor="let reefZone of usableReefZones">
+        <a *ngIf="!reefZoneEmpty && reefZone !== undefined"
+           href="http://data.aims.gov.au/waAesthetics/servaesthetics?fullReefID={{reefZone.fullreefId}}&zone={{reefZone.reefZoneCode}}">
+            <img src="http://data.aims.gov.au/reef-page-plots/photos/small/{{reefZone.photo}}">
+            <p style="text-align: center">{{reefZone.reefZoneName}}</p>
+        </a>
+    </div>
+</div>
+
+
+<!--<ul class="reefZones">-->
+    <!--<li *ngFor="let reefZone of usableReefZones">-->
+        <!--<a *ngIf="!reefZoneEmpty && reefZone !== undefined"-->
+                <!--href="http://data.aims.gov.au/waAesthetics/servaesthetics?fullReefID={{reefZone.fullreefId}}&zone={{reefZone.reefZoneCode}}">-->
+            <!--<img src="http://data.aims.gov.au/reef-page-plots/photos/small/{{reefZone.photo}}">-->
+            <!--<p>{{reefZone.reefZoneName}}</p>-->
+        <!--</a>-->
+    <!--</li>-->
+<!--</ul>-->

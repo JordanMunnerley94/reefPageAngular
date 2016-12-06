@@ -1,7 +1,10 @@
+<div id="columns">
 <ul>
     <li *ngFor="let reefData of reefNames"
-        (click)="goToDetail(reefData)">
+        (click)="goToDetail(reefData)" class="col-sm-12">
 
         <span class="reefList" >{{reefData.reefName}}</span>
     </li>
 </ul>
+    <br />
+</div>

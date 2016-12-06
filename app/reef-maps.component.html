@@ -2,13 +2,16 @@
 <div *ngIf="!reefBoundsEmpty">
     <div class="row">
         <div class="col-sm-6">
-            <div id="overview-map"></div>
+                <div id="overview-map"></div>
         </div>
         <div class="col-sm-6">
             <div id="detailed-map"></div>
         </div>
         <div class="col-sm-12">
-            <img style="display: block; margin: auto;" src="http://maps.aims.gov.au/geoserver/ows?SERVICE=WMS&REQUEST=GetLegendGraphic&LAYER=aims%3ALatestMantaTowPath&FORMAT=image%2Fpng&STYLE=manta-tow-path-coral-cover"/>
+            <img id="map-legend" src="http://maps.aims.gov.au/geoserver/ows?SERVICE=WMS&REQUEST=GetLegendGraphic&LAYER=aims%3ALatestMantaTowPath&FORMAT=image%2Fpng&STYLE=manta-tow-path-coral-cover"/>
+        </div>
+        <div class="col-sm-12">
+            Figure 1 a) map  showing location of Rib reef, b) latest surveyed hard coral cover around the perimeter of {{reefName}}, number of COTS (symbol), diving sites/ intensive survey sites (symbol=circle).
         </div>
     </div>
 </div>

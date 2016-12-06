@@ -19,6 +19,7 @@ export class ReefMapsComponent implements OnInit {
     id: string;
     reefMapBounds: any;
     reefBoundsEmpty: any;
+    reefName: any;
 
     tileHeight: number = 256;
     tileWidth: number = 256;
@@ -102,6 +103,7 @@ export class ReefMapsComponent implements OnInit {
 
     getReefData(id: string): void {
         this.reefPageService.getData(id).then(reefData => {
+            this.reefName = reefData.reef.reefName;
             this.reefMapBounds = reefData.mantaPathBound;
             this.reefBoundsEmpty = this.reefMapBounds === null;
             if (!this.reefBoundsEmpty) {
