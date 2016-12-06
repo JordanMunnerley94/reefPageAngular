@@ -32,7 +32,8 @@ export class ReefPageComponent implements OnInit {
   getReefData(id: string): void {
     this.reefPageService.getData(id).then(reefData => {
       this.reefData = reefData;
-      this.title = reefData.reefComment.reefName + " PAGE.";
+      console.log("Reef Data : ", reefData);
+      this.title = reefData.reef.reefName + " PAGE.";
     });
   };
 

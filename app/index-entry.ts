@@ -1,11 +1,11 @@
 export class IndexEntry {
     reefName: string;
-    id: string;
+    fullreefId: string;
 
 
     constructor(reefName: string, id: string) {
         this.reefName = reefName;
-        this.id = id;
+        this.fullreefId = id;
     }
 
 

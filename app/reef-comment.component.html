@@ -1,2 +1,3 @@
 <h2>Results of manta tow surveys</h2>
-<p class="reefComments">{{reefComments}}</p>
+<p *ngIf="!reefCommentEmpty" class="reefComments">{{reefComments}}</p>
+<p *ngIf="reefCommentEmpty" class="reefComments">No reef comments available.</p>

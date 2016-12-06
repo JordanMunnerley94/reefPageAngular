@@ -20,9 +20,9 @@ var ReefCommentComponent = (function () {
         var _this = this;
         this.reefPageService.getData(id).then(function (reefData) {
             _this.reefData = reefData;
-            _this.reefComments = _this.reefData.reefComment.comments;
-            // Removing out of place <P> tags from the received comment.
-            if (_this.reefComments !== null) {
+            _this.reefCommentEmpty = _this.reefData.reefComment === null;
+            if (!_this.reefCommentEmpty) {
+                _this.reefComments = _this.reefData.reefComment.comments;
                 _this.reefComments = _this.reefComments.replace('<P>', '');
                 _this.reefComments = _this.reefComments.replace('</P>', '');
             }

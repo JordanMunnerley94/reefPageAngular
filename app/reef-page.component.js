@@ -24,7 +24,8 @@ var ReefPageComponent = (function () {
         var _this = this;
         this.reefPageService.getData(id).then(function (reefData) {
             _this.reefData = reefData;
-            _this.title = reefData.reefComment.reefName + " PAGE.";
+            console.log("Reef Data : ", reefData);
+            _this.title = reefData.reef.reefName + " PAGE.";
         });
     };
     ;

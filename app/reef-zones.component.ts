@@ -30,7 +30,6 @@ export class ReefZoneComponent implements OnInit{
             this.reefZones = reefData.photo;
             this.getUsableZones();
             this.reefZoneEmpty = this.usableReefZones.length === 0;
-            console.log(this.reefZoneEmpty, this.reefZones);
         });
     };
 

@@ -13,20 +13,21 @@ import {Router} from "@angular/router";
 })
 export class IndexPageComponent implements OnInit {
 
-    reefNameData: any[];
+    reefNameData: any[] = [];
     reefNames: any[] = [];
     selectedReefComment: IndexEntry;
 
     constructor(
         private router: Router,
-        private reefCommentService: ReefPageService
+        private reefPageService: ReefPageService
     ) { }
 
     getReefComments(): void {
-        this.reefCommentService.getIndexEntries()
-            .then(reefComments => {
-                this.reefNameData = reefComments;
+        this.reefPageService.getIndexEntries()
+            .then(reefDetails => {
+                this.reefNameData = reefDetails;
                 this.generateReefNames(this.reefNameData);
+                console.log(this.reefNames);
             })
     };
 
@@ -34,27 +35,17 @@ export class IndexPageComponent implements OnInit {
         for (let item of data) {
             let rawLink: string = item._links.self.href;
             let split = rawLink.split("/");
-            // console.log(split);
             this.reefNames.push( new IndexEntry(item.reefName, split[split.length - 1]));
         }
     }
-
-    // onSelect(reefComment: IndexEntry): void {
-    //     if(this.selectedReefComment) {
-    //         this.selectedReefComment = reefComment;
-    //         this.goToDetail()
-    //     }
-        // if (this.selectedReefComment) {
-        // }
-    // }
 
     ngOnInit(): void {
         this.getReefComments();
     }
 
     goToDetail(indexEntry: IndexEntry): void {
-        console.log(indexEntry)
-        this.router.navigate(['/reefpage', indexEntry.id])
+        console.log(indexEntry);
+        this.router.navigate(['/reefpage', indexEntry.fullreefId])
     }
 
 }

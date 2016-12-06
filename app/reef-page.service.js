@@ -15,23 +15,16 @@ var ReefPageService = (function () {
     // private reefPageUrl = "http://localhost:8080/reefpage?reefid=13093A";
     function ReefPageService(http) {
         this.http = http;
-        this.indexDataUrl = "http://localhost:8080/reefComments?size=500&sort=reefName";
+        this.indexDataUrl = "http://localhost:8080/reefs?size=500&sort=reefName";
         this.reefPageUrl = "http://localhost:8080/reefpage?reefid=18032S";
         this.specificReefPageUrl = "http://localhost:8080/reefpage?reefid=";
     }
     ReefPageService.prototype.getIndexEntries = function () {
-        window.setTimeout(console.log(), 4000);
         return this.http.get(this.indexDataUrl)
             .toPromise()
-            .then(function (res) { return res.json()._embedded.reefComments; })
+            .then(function (res) { return res.json()._embedded.reefs; })
             .catch(this.handleError);
     };
-    // getData(): Promise<any> {
-    //     return this.http.get(this.reefPageUrl)
-    //         .toPromise()
-    //         .then(res => res.json() as any)
-    //         .catch(this.handleError);
-    // }
     ReefPageService.prototype.getData = function (id) {
         return this.http.get(this.specificReefPageUrl + id)
             .toPromise()

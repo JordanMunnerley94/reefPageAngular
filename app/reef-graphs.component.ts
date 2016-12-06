@@ -40,7 +40,7 @@ export class ReefGraphsComponent implements OnInit{
             this.generateUrls(this.id);
             this.benthicExists = this.checkBenthicDataExists();
             this.mantaExists = this.checkMantaDataExists();
-            this.reefName = reefData.reefComment.reefName;
+            this.reefName = reefData.reef.reefName;
         });
     };
 

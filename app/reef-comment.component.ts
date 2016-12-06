@@ -12,6 +12,7 @@ export class ReefCommentComponent implements OnInit {
 
     reefData: any;
     reefComments: any;
+    reefCommentEmpty: any;
     id: string;
 
     constructor(
@@ -21,12 +22,11 @@ export class ReefCommentComponent implements OnInit {
     getReefData(id: string): void {
         this.reefPageService.getData(id).then(reefData => {
             this.reefData = reefData;
-            this.reefComments = this.reefData.reefComment.comments;
-
-            // Removing out of place <P> tags from the received comment.
-            if (this.reefComments !== null) {
-                this.reefComments = this.reefComments.replace('<P>', '');
-                this.reefComments = this.reefComments.replace('</P>', '');
+            this.reefCommentEmpty = this.reefData.reefComment === null;
+            if (!this.reefCommentEmpty) {
+                this.reefComments = this.reefData.reefComment.comments;
+                    this.reefComments = this.reefComments.replace('<P>', '');
+                    this.reefComments = this.reefComments.replace('</P>', '');
             }
         })
     };
